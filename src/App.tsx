@@ -4,11 +4,12 @@ import './App.css';
 
 function App() {
 
+    const serverURL: string = process.env.REACT_APP_SERVER_URL as string
     const [connectionStatus, setConnectionStatus] = useState("")
 
     const ConnectionTest = () => {
         async function ConnectionTest() {
-            const res = await axios.get("http://localhost:1323/")
+            const res = await axios.get(serverURL)
             console.log(res)
             setConnectionStatus(res.data)
         }
