@@ -9,6 +9,7 @@
 - **masterブランチ/developブランチには絶対に直接pushしないこと**
 
 # ローカルで実行
+- `npm install`
 - `npm start`
 - http://localhost:3000/ にアクセス
 
