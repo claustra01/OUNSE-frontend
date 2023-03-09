@@ -10,6 +10,7 @@ function App() {
     const ConnectionTest = () => {
         async function ConnectionTest() {
             const res = await axios.get(serverURL)
+            console.log(serverURL)
             console.log(res)
             setConnectionStatus(res.data)
         }
