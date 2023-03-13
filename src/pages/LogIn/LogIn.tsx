@@ -1,5 +1,6 @@
 import { Box, Button, Card, CardActions, CardContent, CardHeader, TextField } from "@mui/material";
 import { useState } from "react";
+import { useNavigate } from 'react-router-dom'
 import axios from "axios";
 
 export const LogIn = () => {
@@ -16,6 +17,7 @@ export const LogIn = () => {
     const [password, setPassword] = useState('');
 
     const [errorMessage, setErrorMessage] = useState('')
+    const navigate = useNavigate()
 
     const clickLogIn = async () => {
       
@@ -42,7 +44,8 @@ export const LogIn = () => {
         return
       }
 
-
+      // 成功時リダイレクト
+      navigate('/home')
     }
 
     return (
