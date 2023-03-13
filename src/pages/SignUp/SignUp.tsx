@@ -7,18 +7,20 @@ function SignUp() {
 
     const cardStyle = {
       display: "block",
+      //動き出すまで
       transitionDuration: "0.3s",
       height: "500px",
       width: "400px",
       variant: "outlined",
     };
-
+    //更新する関数を同時に呼び出しす
     const [name, setName] = useState('')
     const [userID, setUserID] = useState('')
     const [password, setPassword] = useState('')
     const [passwordConfirmation, setPasswordConfirmation] = useState('')
 
     const [errorMessage, setErrorMessage] = useState('')
+    //ページ遷移
     const navigate = useNavigate()
 
     const clickSignUp = async () => {
