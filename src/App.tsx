@@ -1,45 +1,38 @@
-import { useState } from 'react';
-import { Routes, Route, BrowserRouter } from 'react-router-dom';
-import axios from 'axios';
+import { useState, useEffect} from 'react';
+import { useCookies } from "react-cookie";
+import { Routes, Route, BrowserRouter, Navigate } from 'react-router-dom';
+import axios from 'axios'
+
 import './App.css';
 
-import { Top } from './pages/Top/Top'
-import { Home } from './pages/Home/Home'
-import { LogIn } from './pages/LogIn/LogIn'
-import { SignUp } from './pages/SignUp/SignUp'
+import Top from './pages/Top/Top'
+import LogIn from './pages/LogIn/LogIn'
+import SignUp from './pages/SignUp/SignUp'
+import Home from './pages/Home/Home';
 
 function App() {
 
-    const [connectionStatus, setConnectionStatus] = useState('')
+    const [isAuth, setIsAuth] = useState(false)
+    const [cookie] = useCookies(['token']);
 
-    const ConnectionTest = () => {
-        async function ConnectionTest() {
-            const res = await axios.get('initialization')
-            console.log('initialization')
-            console.log(res)
-            setConnectionStatus(res.data)
+    useEffect(() => {
+        const f = async () => {
+            const res = await axios.get('auth', {params: {token: cookie['token']}})
+            const obj = JSON.parse(JSON.stringify(res));
+            console.log(obj.data)
+            setIsAuth(obj.data === 'OK')
         }
-        ConnectionTest()
-    }
+        f()
+    })
 
-    const CheckButton = () => {
-        return (
-            <div className="App">
-                <button onClick={ConnectionTest}>Button</button>
-                <br/>
-                {connectionStatus}
-            </div>
-        )
-    }
-      
     return (
         
         <BrowserRouter>
             <Routes>
-                <Route path="/" element={<><CheckButton/><Top/></>} />
-                <Route path="/home" element={<Home/>} />
-                <Route path="/login" element={<LogIn/>} />
-                <Route path="/signup" element={<SignUp/>} />
+                <Route path="/" element={isAuth ? <Navigate replace to="/home" /> : <Top/>} />
+                <Route path="/login" element={isAuth ? <Navigate replace to="/home" /> : <LogIn/>} />
+                <Route path="/signup" element={isAuth ? <Navigate replace to="/home" /> : <SignUp/>} />
+                <Route path="/home" element={isAuth ? <Home/> : <Navigate replace to="/" />} />
             </Routes>
         </BrowserRouter>
 
