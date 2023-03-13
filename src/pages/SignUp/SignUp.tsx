@@ -1,15 +1,8 @@
-import {
-    Box,
-    Button,
-    Card,
-    CardActions,
-    CardContent,
-    CardHeader,
-    TextField,
-  } from "@mui/material";
-  import { memo } from "react";
+import { Box, Button, Card, CardActions, CardContent, CardHeader, TextField } from "@mui/material";
+import { useState } from "react";
   
-  export const SignUp = memo(() => {
+export const SignUp = () => {
+
     const cardStyle = {
       display: "block",
       transitionDuration: "0.3s",
@@ -17,6 +10,18 @@ import {
       width: "400px",
       variant: "outlined",
     };
+
+    const [name, setName] = useState('')
+    const [userID, setUserID] = useState('')
+    const [password, setPassword] = useState('')
+    const [passwordConfirmation, setPasswordConfirmation] = useState('')
+
+    const clickSignup = () => {
+      console.log(name)
+      console.log(userID)
+      console.log(password)
+      console.log(passwordConfirmation)
+    }
   
     return (
       <Box
@@ -31,45 +36,56 @@ import {
             <div>
             <TextField
                 fullWidth
-                id="Name"
-                type="Name"
+                required
+                id="name"
                 label="Name"
                 placeholder="Name"
                 margin="normal"
+                onChange={((e)=>{setName(e.target.value)})}
               />
               <TextField
                 fullWidth
+                required
                 id="userID"
-                type="userID"
                 label="UserID"
                 placeholder="UserID"
                 margin="normal"
+                onChange={((e)=>{setUserID(e.target.value)})}
               />
-              
               <TextField
                 fullWidth
+                required
                 id="password"
                 type="password"
                 label="Password"
                 placeholder="Password"
                 margin="normal"
+                onChange={((e)=>{setPassword(e.target.value)})}
               />
               <TextField
                 fullWidth
-                id="checkpassword"
-                type="checkpassword"
-                label="checkPassword"
-                placeholder="checkPassword"
+                required
+                id="password_confirmation"
+                type="password"
+                label="Password Confirmation"
+                placeholder="Password Confirmation"
                 margin="normal"
+                onChange={((e)=>{setPasswordConfirmation(e.target.value)})}
               />
             </div>
           </CardContent>
           <CardActions>
-            <Button variant="contained" size="large" color="secondary">
+            <Button 
+              variant="contained"
+              size="large"
+              color="secondary"
+              onClick={clickSignup}
+            >
               Go
             </Button>
           </CardActions>
         </Card>
       </Box>
     );
-  });
+    
+};
