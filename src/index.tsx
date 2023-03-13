@@ -4,17 +4,19 @@ import axios from 'axios';
 import './index.css';
 import App from './App';
 import reportWebVitals from './reportWebVitals';
+import { CookiesProvider } from "react-cookie";
 
 axios.defaults.baseURL = process.env.REACT_APP_API_URL as string
-axios.defaults.withCredentials = true
 
 const root = ReactDOM.createRoot(
   document.getElementById('root') as HTMLElement
 );
 root.render(
-  <React.StrictMode>
-    <App />
-  </React.StrictMode>
+  <CookiesProvider>
+    <React.StrictMode>
+      <App />
+    </React.StrictMode>
+  </CookiesProvider>
 );
 
 // If you want to start measuring performance in your app, pass a function
