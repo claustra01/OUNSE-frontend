@@ -13,7 +13,7 @@ import {
     const cardStyle = {
       display: "block",
       transitionDuration: "0.3s",
-      height: "450px",
+      height: "500px",
       width: "400px",
       variant: "outlined",
     };
@@ -31,8 +31,16 @@ import {
             <div>
               <TextField
                 fullWidth
-                id="username"
-                type="email"
+                id="userID"
+                type="userID"
+                label="UserID"
+                placeholder="UserID"
+                margin="normal"
+              />
+              <TextField
+                fullWidth
+                id=""
+                type="userName"
                 label="Username"
                 placeholder="Username"
                 margin="normal"
@@ -43,6 +51,14 @@ import {
                 type="password"
                 label="Password"
                 placeholder="Password"
+                margin="normal"
+              />
+              <TextField
+                fullWidth
+                id="checkpassword"
+                type="checkpassword"
+                label="checkPassword"
+                placeholder="checkPassword"
                 margin="normal"
               />
             </div>

@@ -26,15 +26,15 @@ import {
         padding={20}
       >
         <Card style={cardStyle}>
-          <CardHeader title="ログインページ" />
+          <CardHeader title="LogIn" />
           <CardContent>
             <div>
               <TextField
                 fullWidth
-                id="username"
-                type="email"
-                label="Username"
-                placeholder="Username"
+                id="userID"
+                type="userID"
+                label="UserID"
+                placeholder="UserID"
                 margin="normal"
               />
               <TextField
@@ -48,9 +48,13 @@ import {
             </div>
           </CardContent>
           <CardActions>
-            <Button variant="contained" size="large" color="secondary">
-              Login
-            </Button>
+            <div className="Button">
+                <div className="loginButton">
+                    <Button variant="contained" size="large" color="secondary">
+                    GO
+                    </Button>
+                </div>
+            </div>
           </CardActions>
         </Card>
       </Box>
