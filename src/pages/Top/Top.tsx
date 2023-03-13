@@ -1,6 +1,6 @@
 import Button from '@mui/material/Button';
 
-export function Top() {
+function Top() {
 
     return (
         <div className="Button" >
@@ -18,3 +18,5 @@ export function Top() {
         </div>
     );
 };
+
+export default Top

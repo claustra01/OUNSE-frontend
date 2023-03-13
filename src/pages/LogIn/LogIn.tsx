@@ -4,7 +4,7 @@ import { useNavigate } from 'react-router-dom'
 import { useCookies } from "react-cookie";
 import axios from "axios";
 
-export const LogIn = () => {
+function LogIn() {
 
     const cardStyle = {
       display: "block",
@@ -104,3 +104,5 @@ export const LogIn = () => {
     );
 
 }
+
+export default LogIn
