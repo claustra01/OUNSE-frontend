@@ -34,7 +34,7 @@ export const LogIn = () => {
       const res = await axios.post('login', {
           user_id: userID,
           password: password
-      }, {withCredentials: true})
+      })
       const obj = JSON.parse(JSON.stringify(res));
       console.log(obj.data)
 
