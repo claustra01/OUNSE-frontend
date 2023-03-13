@@ -39,11 +39,11 @@ export const SignUp = () => {
       }
 
       // 登録処理
-      const res = await axios.post('signup?' +
-        "user_id=" + userID + "&" +
-        "name=" + name + "&" +
-        "password=" + password
-      )
+      const res = await axios.post('signup', {
+        user_id: userID,
+        name: name,
+        password: password
+      })
       const obj = JSON.parse(JSON.stringify(res));
       console.log(obj.data)
 
