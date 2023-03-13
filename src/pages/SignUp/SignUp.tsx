@@ -29,6 +29,14 @@ import {
           <CardHeader title="SignUp" />
           <CardContent>
             <div>
+            <TextField
+                fullWidth
+                id="Name"
+                type="Name"
+                label="Name"
+                placeholder="Name"
+                margin="normal"
+              />
               <TextField
                 fullWidth
                 id="userID"
@@ -37,14 +45,7 @@ import {
                 placeholder="UserID"
                 margin="normal"
               />
-              <TextField
-                fullWidth
-                id="userName"
-                type="userName"
-                label="Username"
-                placeholder="Username"
-                margin="normal"
-              />
+              
               <TextField
                 fullWidth
                 id="password"
