@@ -22,6 +22,15 @@ function LogIn() {
 
     const [cookie, setCookie] = useCookies(['token']);
 
+    const myStyle = {
+      '& .MuiOutlinedInput-root': {
+        '& fieldset': {
+          borderColor: '#00A83C',    
+          // 通常時のボーダー色(アウトライン)
+        },
+      },
+    }
+
     const clickLogIn = async () => {
       
       // 入力エラー
@@ -52,7 +61,6 @@ function LogIn() {
       console.log(cookie)
       navigate('/home')
     }
-
     return (
       <Box
         display="flex"
@@ -60,8 +68,10 @@ function LogIn() {
         justifyContent="center"
         padding={20}
       >
+        
         <Card style={cardStyle}>
-          <CardHeader title="LogIn" />
+          <CardHeader title="LogIn" 
+          style={{color: "#00A83C", textAlign: "center",justifyContent:"center" }}/>
           <CardContent>
             <div>
               <TextField
@@ -89,8 +99,8 @@ function LogIn() {
               <div className="loginButton">
                 <Button
                   variant="contained"
-                  size="large"
-                  color="secondary"
+                  sx={{m: "0 auto", textAlign: "center",justifyContent:"center"}}
+                  style={{backgroundColor: "#00A83C"}}
                   onClick={clickLogIn}
                 >
                   Log In
@@ -101,6 +111,7 @@ function LogIn() {
           {errorMessage}
         </Card>
       </Box>
+
     );
 
 }
