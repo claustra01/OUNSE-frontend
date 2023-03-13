@@ -1,5 +1,7 @@
 import { Box, Button, Card, CardActions, CardContent, CardHeader, TextField } from "@mui/material";
+import axios from "axios";
 import { useState } from "react";
+import { useNavigate } from 'react-router-dom'
   
 export const SignUp = () => {
 
@@ -16,11 +18,43 @@ export const SignUp = () => {
     const [password, setPassword] = useState('')
     const [passwordConfirmation, setPasswordConfirmation] = useState('')
 
-    const clickSignUp = () => {
-      console.log(name)
-      console.log(userID)
-      console.log(password)
-      console.log(passwordConfirmation)
+    const [errorMessage, setErrorMessage] = useState('')
+    const navigate = useNavigate()
+
+    const clickSignUp = async () => {
+    
+      // 入力エラー
+      if (name === '') {
+        setErrorMessage('Name is empty')
+        return
+      } else if (userID === '') {
+        setErrorMessage('UserID is empty')
+        return
+      } else if (password === '') {
+        setErrorMessage('password is empty')
+        return
+      } else if (password !== passwordConfirmation) {
+        setErrorMessage('Password does not match')
+        return
+      }
+
+      // 登録処理
+      const res = await axios.post('signup', {
+        user_id: userID,
+        name: name,
+        password: password
+      })
+      const obj = JSON.parse(JSON.stringify(res));
+      console.log(obj.data)
+
+      // エラー処理
+      if (obj.data.Status === false) {
+        setErrorMessage(obj.data.Message)
+        return
+      }
+
+      // 成功時リダイレクト
+      navigate('/login')
     }
   
     return (
@@ -81,9 +115,10 @@ export const SignUp = () => {
               color="secondary"
               onClick={clickSignUp}
             >
-              Go
+              Sign Up
             </Button>
           </CardActions>
+          {errorMessage}
         </Card>
       </Box>
     );
