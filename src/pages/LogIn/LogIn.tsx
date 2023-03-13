@@ -1,35 +1,49 @@
-import {
-    Box,
-    Button,
-    Card,
-    CardActions,
-    CardContent,
-    CardHeader,
-    TextField,
-  } from "@mui/material";
-  import { memo } from "react";
-  import { useState } from 'react'
-  import axios from 'axios'
-  import { redirect } from 'react-router'
-  import { DEFAULT_MAX_VERSION } from "tls";
-  import React from "react";
+import { Box, Button, Card, CardActions, CardContent, CardHeader, TextField } from "@mui/material";
+import { useState } from "react";
+import axios from "axios";
 
-  
-  export const LogIn = memo(() => {
-     const cardStyle = {
+export const LogIn = () => {
+
+    const cardStyle = {
       display: "block",
       transitionDuration: "0.3s",
       height: "450px",
-       width: "400px",
-       variant: "outlined",
-     };
+      width: "400px",
+      variant: "outlined",
+    };
 
-        const [value, setValue] = useState('');
-        const [userID, setUserID] = useState('');
-        const [password, setPassword] = useState('');
-        
+    const [userID, setUserID] = useState('');
+    const [password, setPassword] = useState('');
+
+    const [errorMessage, setErrorMessage] = useState('')
+
+    const clickLogIn = async () => {
+      
+      // 入力エラー
+      if (userID === '') {
+        setErrorMessage('UserID is empty')
+        return
+      } else if (password === '') {
+        setErrorMessage('password is empty')
+        return
+      }
+
+      // ログイン処理
+      const res = await axios.post('login', {
+          user_id: userID,
+          password: password
+      }, {withCredentials: true})
+      const obj = JSON.parse(JSON.stringify(res));
+      console.log(obj.data)
+
+      // エラー処理
+      if (obj.data.Result === 'Failed') {
+        setErrorMessage(obj.data.Message)
+        return
+      }
 
 
+    }
 
     return (
       <Box
@@ -49,7 +63,7 @@ import {
                 label="UserID"
                 placeholder="UserID"
                 margin="normal"
-                onChange={(e) => setUserID(e.target.value)}
+                onChange={((e)=>{setUserID(e.target.value)})}
               />
               <TextField
                 fullWidth
@@ -58,21 +72,27 @@ import {
                 label="Password"
                 placeholder="Password"
                 margin="normal"
-                onChange={(e) => setPassword(e.target.value)}
+                onChange={((e)=>{setPassword(e.target.value)})}
               />
             </div>
           </CardContent>
           <CardActions>
             <div className="Button">
-                <div className="loginButton">
-                    <Button variant="contained" size="large" color="secondary" onClick={(e) => console.log(e.currentTarget.value)}>
-                    GO
-                    </Button>
-                </div>
+              <div className="loginButton">
+                <Button
+                  variant="contained"
+                  size="large"
+                  color="secondary"
+                  onClick={clickLogIn}
+                >
+                  Log In
+                </Button>
+              </div>
             </div>
           </CardActions>
+          {errorMessage}
         </Card>
       </Box>
-      
     );
-  })
+
+}
