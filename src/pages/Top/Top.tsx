@@ -1,24 +1,7 @@
-import { useState, useEffect, useContext, useReducer, useLayoutEffect } from 'react';
 import Button from '@mui/material/Button';
 
-
-const useWindowSize = () => {
-    const [size, setSize] = useState(0)
-    useLayoutEffect(() => {
-        const updateSize = () => {
-            setSize(window.innerWidth)
-        }
-        window.addEventListener('resize', updateSize)
-        updateSize()
-        return () => window.removeEventListener('resize', updateSize)
-    }, [])
-    return size
-}
-
-
-
 export function Top() {
-    
+
     return (
         <div className="Button" >
             <div className="itemCenter" >
