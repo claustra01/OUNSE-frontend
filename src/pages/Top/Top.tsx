@@ -1,5 +1,7 @@
 import Button from '@mui/material/Button';
 import { useNavigate } from 'react-router-dom'
+import LogoImage from "./ounce.png"
+import Grid from '@mui/material/Grid';
 
 function Top() {
 
@@ -14,22 +16,28 @@ function Top() {
     }
 
     return (
+        
         <div className="Button" >
+            <Grid item  sx={{m: "5em 10em 0 35em" }}>
+                <img src={LogoImage} alt="ounce" width="350px"/>
+            </Grid>
             <div className="itemCenter" >
                 <Button
                     className="marginAuto"
-                    size="large"　sx={{m:"20em auto 5em auto", height: "5em", justifyContent: "center", alignItems: "center", display:"flex"}}
+                    size="large"　sx={{m:"0 auto 3em auto", height: "5em", justifyContent: "center", alignItems: "center", display:"flex"}}
                     variant="contained" disableElevation
+                    style={{backgroundColor: "#00A83C"}}
                     onClick={redirectLogIn}
                 >
-                    &#x1F510;　　LogIn　　&#x1F511;
+                    ● 　　　　　　　　LogIn　　　　　　　　●
                 </Button>
                 <Button
-                    sx={{m:"0 auto 10em auto", height: "5em", justifyContent: "center", alignItems: "center", display:"flex"}}
+                    sx={{m:"0 auto 5em auto", height: "5em", justifyContent: "center", alignItems: "center", display:"flex"}}
+                    style={{backgroundColor: "#00A83C"}}
                     variant="contained" disableElevation
                     onClick={redirectSignUp}
                 >
-                    SignUp
+                    ● 　　　　　　　　　SignUp　　　　　　　　　●
                 </Button>
 
             </div>
