@@ -8,16 +8,29 @@ import {
     TextField,
   } from "@mui/material";
   import { memo } from "react";
+  import { useState } from 'react'
+  import axios from 'axios'
+  import { redirect } from 'react-router'
+  import { DEFAULT_MAX_VERSION } from "tls";
+  import React from "react";
+
   
   export const LogIn = memo(() => {
-    const cardStyle = {
+     const cardStyle = {
       display: "block",
       transitionDuration: "0.3s",
       height: "450px",
-      width: "400px",
-      variant: "outlined",
-    };
-  
+       width: "400px",
+       variant: "outlined",
+     };
+
+        const [value, setValue] = useState('');
+        const [userID, setUserID] = useState('');
+        const [password, setPassword] = useState('');
+        
+
+
+
     return (
       <Box
         display="flex"
@@ -31,26 +44,30 @@ import {
             <div>
               <TextField
                 fullWidth
+                required
                 id="userID"
                 type="userID"
                 label="UserID"
                 placeholder="UserID"
                 margin="normal"
+                onChange={(e) => setUserID(e.target.value)}
               />
               <TextField
                 fullWidth
+                required
                 id="password"
                 type="password"
                 label="Password"
                 placeholder="Password"
                 margin="normal"
+                onChange={(e) => setPassword(e.target.value)}
               />
             </div>
           </CardContent>
           <CardActions>
             <div className="Button">
                 <div className="loginButton">
-                    <Button variant="contained" size="large" color="secondary">
+                    <Button variant="contained" size="large" color="secondary" onClick={(e) => console.log(e.currentTarget.value)}>
                     GO
                     </Button>
                 </div>
@@ -58,5 +75,6 @@ import {
           </CardActions>
         </Card>
       </Box>
+      
     );
-  });
+  })
