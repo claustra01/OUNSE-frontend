@@ -11,12 +11,20 @@ import Container from '@mui/material/Container';
 import Avatar from '@mui/material/Avatar';
 import Tooltip from '@mui/material/Tooltip';
 import MenuItem from '@mui/material/MenuItem';
-import { useNavigate, Link } from 'react-router-dom';
+// import { useNavigate, Link } from 'react-router-dom';
+import { useNavigate } from 'react-router-dom';
 
-const settings = [
-    { label: 'ログアウト', link: '/'}
-  ];
+// const settings = [
+//     { label: 'ログアウト', link: '/'}
+//   ];
+
 export function Home() {
+        const navigate = useNavigate()
+        const redirectSignOut = () => {
+            navigate('/')
+            console.log(Home)     
+    }
+
     return (
         <>
             <div className="background-color"/>
@@ -25,10 +33,11 @@ export function Home() {
                 variant="contained" 
                 sx={{m: "1em 5em 1em 90em", 
                 justifyContent:"center", 
-                textAlign: "center",
-
+                textAlign: "center"
                  }}
+                 onClick={redirectSignOut}
                 style={{ backgroundColor: "#388e3c" }}
+                
                 >SignOut
                     <Container maxWidth="xl">
                     <Toolbar disableGutters>
