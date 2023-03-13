@@ -13,17 +13,21 @@ import Tooltip from '@mui/material/Tooltip';
 import MenuItem from '@mui/material/MenuItem';
 // import { useNavigate, Link } from 'react-router-dom';
 import { useNavigate } from 'react-router-dom';
+import { useCookies } from "react-cookie";
 
 // const settings = [
 //     { label: 'ログアウト', link: '/'}
 //   ];
 
 function Home() {
+        const [cookie, setCookie, removeCookie] = useCookies(["token"]);
         const navigate = useNavigate()
         const redirectSignOut = () => {
-            navigate('/')
-            console.log(Home)     
-    }
+                removeCookie("token");
+                navigate('/')
+              }
+            
+
 
     return (
         <>
