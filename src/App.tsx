@@ -1,6 +1,6 @@
 import { useState, useEffect} from 'react';
 import { useCookies } from "react-cookie";
-import { Routes, Route, BrowserRouter } from 'react-router-dom';
+import { Routes, Route, BrowserRouter, Navigate } from 'react-router-dom';
 import axios from 'axios'
 
 import './App.css';
@@ -29,10 +29,10 @@ function App() {
         
         <BrowserRouter>
             <Routes>
-                <Route path="/" element={<Top/>} />
-                <Route path="/login" element={<LogIn/>} />
-                <Route path="/signup" element={<SignUp/>} />
-                <Route path="/home" element={<Home/>} />
+                <Route path="/" element={isAuth ? <Navigate replace to="/home" /> : <Top/>} />
+                <Route path="/login" element={isAuth ? <Navigate replace to="/home" /> : <LogIn/>} />
+                <Route path="/signup" element={isAuth ? <Navigate replace to="/home" /> : <SignUp/>} />
+                <Route path="/home" element={isAuth ? <Home/> : <Navigate replace to="/" />} />
             </Routes>
         </BrowserRouter>
 
