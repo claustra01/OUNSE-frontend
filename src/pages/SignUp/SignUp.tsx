@@ -16,7 +16,7 @@ export const SignUp = () => {
     const [password, setPassword] = useState('')
     const [passwordConfirmation, setPasswordConfirmation] = useState('')
 
-    const clickSignup = () => {
+    const clickSignUp = () => {
       console.log(name)
       console.log(userID)
       console.log(password)
@@ -79,7 +79,7 @@ export const SignUp = () => {
               variant="contained"
               size="large"
               color="secondary"
-              onClick={clickSignup}
+              onClick={clickSignUp}
             >
               Go
             </Button>
