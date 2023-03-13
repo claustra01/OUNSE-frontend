@@ -18,7 +18,7 @@ import { useNavigate } from 'react-router-dom';
 //     { label: 'ログアウト', link: '/'}
 //   ];
 
-export function Home() {
+function Home() {
         const navigate = useNavigate()
         const redirectSignOut = () => {
             navigate('/')
@@ -81,3 +81,5 @@ export function Home() {
         </>
     )
 }
+
+export default Home

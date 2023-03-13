@@ -1,9 +1,10 @@
 import { Box, Button, Card, CardActions, CardContent, CardHeader, TextField } from "@mui/material";
 import { useState } from "react";
 import { useNavigate } from 'react-router-dom'
+import { useCookies } from "react-cookie";
 import axios from "axios";
 
-export const LogIn = () => {
+function LogIn() {
 
     const cardStyle = {
       display: "block",
@@ -18,6 +19,8 @@ export const LogIn = () => {
 
     const [errorMessage, setErrorMessage] = useState('')
     const navigate = useNavigate()
+
+    const [cookie, setCookie] = useCookies(['token']);
 
     const clickLogIn = async () => {
       
@@ -44,7 +47,9 @@ export const LogIn = () => {
         return
       }
 
-      // 成功時リダイレクト
+      // 成功時トークン保存とリダイレクト
+      setCookie('token', obj.data.Message)
+      console.log(cookie)
       navigate('/home')
     }
 
@@ -99,3 +104,5 @@ export const LogIn = () => {
     );
 
 }
+
+export default LogIn
