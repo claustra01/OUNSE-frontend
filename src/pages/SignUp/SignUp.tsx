@@ -66,7 +66,7 @@ function SignUp() {
         display="flex"
         alignItems="center"
         justifyContent="center"
-        padding={15}
+        padding={4 }
       >
         <Card style={cardStyle}>
           <CardHeader 
@@ -122,6 +122,7 @@ function SignUp() {
               variant="contained"
               size="large"
               style={{backgroundColor: "#00A83C"}}
+              sx={{m: "0 auto"}}
               onClick={clickSignUp}
             >
               Sign Up
