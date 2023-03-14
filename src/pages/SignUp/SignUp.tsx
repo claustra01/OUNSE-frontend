@@ -66,7 +66,7 @@ function SignUp() {
         display="flex"
         alignItems="center"
         justifyContent="center"
-        padding={15}
+        padding={9}
       >
         <Card style={cardStyle}>
           <CardHeader 
