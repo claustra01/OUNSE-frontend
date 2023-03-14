@@ -3,6 +3,9 @@ import { useState } from "react";
 import { useNavigate } from 'react-router-dom'
 import { useCookies } from "react-cookie";
 import axios from "axios";
+import Header from "../../components/Header"
+
+
 
 function LogIn() {
 
@@ -61,57 +64,64 @@ function LogIn() {
       console.log(cookie)
       navigate('/home')
     }
-    return (
-      <Box
-        display="flex"
-        alignItems="center"
-        justifyContent="center"
-        padding={20}
-      >
-        
-        <Card style={cardStyle}>
-          <CardHeader title="LogIn" 
-          style={{color: "#00A83C", textAlign: "center",justifyContent:"center" }}/>
-          <CardContent>
-            <div>
-              <TextField
-                fullWidth
-                id="userID"
-                type="userID"
-                label="UserID"
-                placeholder="UserID"
-                margin="normal"
-                onChange={((e)=>{setUserID(e.target.value)})}
-              />
-              <TextField
-                fullWidth
-                id="password"
-                type="password"
-                label="Password"
-                placeholder="Password"
-                margin="normal"
-                onChange={((e)=>{setPassword(e.target.value)})}
-              />
-            </div>
-          </CardContent>
-          <CardActions>
-            <div className="Button">
-              <div className="loginButton">
-                <Button
-                  variant="contained"
-                  sx={{m: "0 auto", textAlign: "center",justifyContent:"center"}}
-                  style={{backgroundColor: "#00A83C"}}
-                  onClick={clickLogIn}
-                >
-                  Log In
-                </Button>
-              </div>
-            </div>
-          </CardActions>
-          {errorMessage}
-        </Card>
-      </Box>
 
+   
+    return (
+      <div>
+
+        <div className="wrapper">
+          <Header/>
+        <Box
+          display="flex"
+          alignItems="center"
+          justifyContent="center"
+          padding={20}
+        >
+          
+          <Card style={cardStyle}>
+            <CardHeader title="LogIn" 
+            style={{color: "#00A83C", textAlign: "center",justifyContent:"center" }}/>
+            <CardContent>
+              <div>
+                <TextField
+                  fullWidth
+                  id="userID"
+                  type="userID"
+                  label="UserID"
+                  placeholder="UserID"
+                  margin="normal"
+                  onChange={((e)=>{setUserID(e.target.value)})}
+                />
+                <TextField
+                  fullWidth
+                  id="password"
+                  type="password"
+                  label="Password"
+                  placeholder="Password"
+                  margin="normal"
+                  onChange={((e)=>{setPassword(e.target.value)})}
+                />
+              </div>
+            </CardContent>
+            <CardActions>
+              <div className="Button">
+                <div className="loginButton">
+                  <Button
+                    variant="contained"
+                    sx={{m: "0 auto", textAlign: "center",justifyContent:"center"}}
+                    style={{backgroundColor: "#00A83C"}}
+                    onClick={clickLogIn}
+                  >
+                    Log In
+                  </Button>
+                </div>
+              </div>
+            </CardActions>
+            {errorMessage}
+          </Card>
+        </Box>
+      </div>
+      </div>
     );
 
 }
