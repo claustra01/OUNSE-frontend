@@ -3,6 +3,7 @@ import { useState } from "react";
 import { useNavigate } from 'react-router-dom'
 import { useCookies } from "react-cookie";
 import axios from "axios";
+import Header from "../../components/Header"
 
 function LogIn() {
 
@@ -62,6 +63,9 @@ function LogIn() {
       navigate('/home')
     }
     return (
+
+      <div className="wrapper">
+        <Header/>
       <Box
         display="flex"
         alignItems="center"
@@ -111,7 +115,7 @@ function LogIn() {
           {errorMessage}
         </Card>
       </Box>
-
+      </div>
     );
 
 }
