@@ -7,6 +7,8 @@ import { useNavigate } from 'react-router-dom';
 import { useCookies } from "react-cookie";
 import { useState } from "react";
 
+
+
 function Home() {
         const [cookie, setCookie, removeCookie] = useCookies(["token"]);
         const [title, setTitle] = useState('')
