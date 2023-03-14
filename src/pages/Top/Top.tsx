@@ -1,7 +1,7 @@
 import Button from '@mui/material/Button';
 import { useNavigate } from 'react-router-dom'
 import LogoImage from "./ounce.png"
-import Grid from '@mui/material/Grid';
+
 
 function Top() {
 
@@ -13,10 +13,12 @@ function Top() {
         navigate('/signup')
     }
     return (
-        <div className="Button" >
-            <Grid item  sx={{m: "2em 10em 0 35em" }}>
-                <img src={LogoImage} alt="ounce" width="350px"/>
-            </Grid>
+        <div className="Button" style={{textAlign: "center"}}>
+           
+                <img src={LogoImage} alt="ounce" width="350px" 
+                />
+                                
+
             <div className="itemCenter" >
                 <Button
                     className="marginAuto"
