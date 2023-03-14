@@ -2,9 +2,9 @@ import { Box, Button, Card, CardActions, CardContent, CardHeader, TextField } fr
 import axios from "axios";
 import { useState } from "react";
 import { useNavigate } from 'react-router-dom'
-  
-function SignUp() {
+import Header from '../../components/Header'
 
+function SignUp() {
     const cardStyle = {
       display: "block",
       //動き出すまで
@@ -74,7 +74,7 @@ function SignUp() {
            justifyContent:"center" }}
            />
           <CardContent>
-            <div>
+            
             <TextField
                 fullWidth
                 required
@@ -113,7 +113,7 @@ function SignUp() {
                 margin="normal"
                 onChange={((e)=>{setPasswordConfirmation(e.target.value)})}
               />
-            </div>
+        
           </CardContent>
           <CardActions>
             <Button 
@@ -128,8 +128,7 @@ function SignUp() {
           {errorMessage}
         </Card>
       </Box>
-    );
-    
+    )
 };
 
 export default SignUp

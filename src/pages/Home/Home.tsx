@@ -1,33 +1,67 @@
-import { Box, Button, Card, CardActions, CardContent, CardHeader, TextField } from "@mui/material";
+import { Box, Button, TextField } from "@mui/material";
 import AppBar from '@mui/material/AppBar';
-import Toolbar from '@mui/material/Toolbar';
-import Typography from '@mui/material/Typography';
-import Container from '@mui/material/Container';
 import { useNavigate } from 'react-router-dom';
 import { useCookies } from "react-cookie";
-import { useState } from "react";
+import { useState, useEffect } from 'react';
+import axios from "axios";
+import './Home.css';
+import TimeLine from "../../components/TimeLine/TimeLine";
 
+type User = {
+    userId: string
+    userName: string
+}
 
+function Home({userId, userName}: User) {
 
-function Home() {
-        const [cookie, setCookie, removeCookie] = useCookies(["token"]);
-        const [title, setTitle] = useState('')
-        const [post, setPost] = useState('')
-        const[friendID, setFriendID] = useState('');
-        const navigate = useNavigate()
-        const redirectSignOut = () => {
-                removeCookie("token");
-                navigate('/')
-            }
-        
-        const clickPost = async () => {
-            console.log(title)
-            console.log(post)
-        }
-        const clickFollow= async()=>{
-            console.log(friendID)
+    // ログアウト
+    // eslint-disable-next-line @typescript-eslint/no-unused-vars
+    const [cookie, setCookie, removeCookie] = useCookies(["token"]);
+    const navigate = useNavigate()
+
+    const redirectSignOut = () => {
+        removeCookie("token");
+        navigate('/')
+    }
     
+    // 新規投稿
+    const [title, setTitle] = useState('')
+    const [body, setBody] = useState('')
+    const [errorMessage, setErrorMessage] = useState('')
+
+    const clickPost = async () => {
+
+      // 入力エラー
+      if (title === '') {
+        setErrorMessage('タイトルが入力されていません')
+        return
+      } else if (body === '') {
+        setErrorMessage('本文が入力されていません')
+        return
+      }
+
+      // 投稿
+      const res = await axios.post('createpost', {
+        title: title,
+        body: body,
+        user_id: userId
+      })
+      const obj = JSON.parse(JSON.stringify(res));
+      console.log(obj.data)
+
+    }
+
+    // TL取得
+    const [timeLine, setTimeLine] = useState([])
+
+    useEffect(() => { 
+        const getTL = async () => {
+            const res = await axios.get('gettimeline', {params: {user_id: userId}})
+            const obj = JSON.parse(JSON.stringify(res));
+            setTimeLine(obj.data)
         }
+        if (userId !== '') getTL()
+    }, [userId])
             
     return (
         <>
@@ -41,20 +75,8 @@ function Home() {
                     }}
                     onClick={redirectSignOut}
                     style={{ backgroundColor: "#388e3c" }}
-                    >SignOut
-                    <TextField id="filled-basic" label="Filled" variant="filled" 
-                    />
-                    <Container maxWidth="xl">
-                        <Toolbar disableGutters>
-                            <Typography
-                                variant="h6"
-                                noWrap
-                                component="div"
-                                sx={{ mr: 2, display: { xs: 'none', md: 'flex'} }}
-                                >
-                            </Typography>
-                    </Toolbar>
-                </Container>
+                >
+                    SignOut
                 </Button> 
             </AppBar>
             <Box
@@ -64,60 +86,36 @@ function Home() {
                 }}
                 style={{ backgroundColor: "#FFFCEF" }}
                 >
-                   <TextField
-                   required 
-                   id="title" 
-                   label="title" 
-                   variant="standard"
-                   sx={{m: "2em 3em 0 3em",
-                   height: "5em",
-                   width: "20em"
-                }}
-                onChange={((e)=>{setTitle(e.target.value)})}/>
-            
+                <TextField
+                    required 
+                    id="title" 
+                    label="title" 
+                    variant="standard"
+                    sx={{ m: "2em 3em 0 3em", height: "5em", width: "20em" }}
+                    onChange={((e)=>{setTitle(e.target.value)})}
+                />
                 <TextField 
                     required
                     multiline
                     minRows="14"
                     id="post" 
                     label="post" 
-                    sx={{m:"1em 3em 2em 3em", 
-                    height: "10em",
-                    width: "20em",
-                    }}
-                    onChange={((e)=>{setPost(e.target.value)})}
+                    sx={{ m:"1em 3em 2em 3em", height: "10em", width: "20em" }}
+                    onChange={((e)=>{setBody(e.target.value)})}
                     />
-                    <TextField 
-                    required
-                    multiline
-                    id="friendID" 
-                    label="FriendID" 
-                    variant="outlined"
-                    sx={{m: "40rem 40rem 40rem 40rem", 
-                    width:"40em",
-                     justifyContent: "center", 
-                    display:"flex"}}
-                    onChange={((e)=>{setFriendID(e.target.value)})}
-                    />
-                    <Button 
-                    variant="contained"
-                    onClick={clickFollow}
-                    >follow</Button>
                 <Button 
                     variant="contained"
-                    sx={{m:"14em 5em 10em 20em ", 
-                    height: "3em",
-                    textAlign:"center",
-                    justifyContent: "center", 
-                    alignItems: "center", 
-                    display:"flex"
-                    }} 
+                    sx={{ m:"14em 5em 10em 20em ", height: "3em", textAlign:"center", justifyContent: "center", alignItems: "center", display:"flex" }} 
                     style={{ backgroundColor: "#388e3c" }}
                     onClick={clickPost}
-                    >投稿</Button>
-                </Box>
-                
-
+                >
+                  投稿
+                </Button>
+                {errorMessage}
+            </Box>
+            <div className="TimeLine">
+                <TimeLine timeLine={timeLine} />
+            </div>
         </>
     )
  
