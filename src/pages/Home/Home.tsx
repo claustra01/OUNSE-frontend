@@ -2,11 +2,18 @@ import { Box, Button, TextField } from "@mui/material";
 import AppBar from '@mui/material/AppBar';
 import { useNavigate } from 'react-router-dom';
 import { useCookies } from "react-cookie";
-import { useState, useEffect, useContext } from 'react';
+import { useState, useEffect, useContext, createContext } from 'react';
 import axios from "axios";
 import './Home.css';
 import TimeLine from "../../components/TimeLine/TimeLine";
 import { UserContext } from '../../App';
+
+type Reload = {
+    reload: number,
+    setReload: React.Dispatch<React.SetStateAction<number>>
+}
+
+export const ReloadContext = createContext({} as Reload)
 
 function Home() {
 
@@ -118,7 +125,9 @@ function Home() {
                 {errorMessage}
             </Box>
             <div className="TimeLine">
-                <TimeLine timeLine={timeLine} />
+                <ReloadContext.Provider value={{reload, setReload}}>
+                    <TimeLine timeLine={timeLine} />
+                </ReloadContext.Provider>
             </div>
         </>
     )

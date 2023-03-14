@@ -2,6 +2,7 @@ import { Modal, Box, TextField, Button } from "@mui/material"
 import { useContext, useState } from "react";
 import { UserContext } from "../App";
 import axios from "axios";
+import { ReloadContext } from '../pages/Home/Home';
 
 type MyProps = {
     openModal: boolean,
@@ -12,6 +13,7 @@ type MyProps = {
 function PostModal({openModal, setOpenModal, post}: MyProps) {
 
     const {userId} = useContext(UserContext)
+    const {reload, setReload} = useContext(ReloadContext)
 
     const [title, setTitle] = useState('')
     const [body, setBody] = useState('')
@@ -35,6 +37,7 @@ function PostModal({openModal, setOpenModal, post}: MyProps) {
     // 投稿削除
     const removePost = async () =>{
         const res = await axios.delete('deletepost', {params: {id: obj.Id}})
+        setReload(reload+1)
         setOpenModal(false)
         console.log(res.data)  
     }
