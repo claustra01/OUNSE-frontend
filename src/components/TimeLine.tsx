@@ -1,7 +1,13 @@
+import { useEffect } from "react"
 
-function TimeLine(timeLine: any) {
+function TimeLine(props: {timeLine: String[]}) {
+
+    useEffect(() => { 
+        console.log(props.timeLine)
+    })
+
     return (
-        <>aaaa</>
+        <>timeline</>
     )
 }
 

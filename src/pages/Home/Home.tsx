@@ -60,7 +60,7 @@ function Home({userId, userName}: User) {
             setTimeLine(obj.data)
         }
         if (userId !== '') getTL()
-    })
+    }, [userId])
             
     return (
         <>
