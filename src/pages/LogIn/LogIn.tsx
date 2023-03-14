@@ -30,7 +30,6 @@ function LogIn() {
         '& fieldset': {
           borderColor: '#00A83C',    
           // 通常時のボーダー色(アウトライン)
-
         },
       },
     }

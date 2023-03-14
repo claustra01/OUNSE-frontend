@@ -3,7 +3,6 @@ import axios from "axios";
 import { useState } from "react";
 import { useNavigate } from 'react-router-dom'
 import Header from "../../components/Header";
-  
 function SignUp() {
     const cardStyle = {
       display: "block",

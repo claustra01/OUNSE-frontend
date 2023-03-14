@@ -1,6 +1,5 @@
 import AppBar from '@mui/material/AppBar';
 import Box from '@mui/material/Box';
-import { height } from '@mui/system';
 
 export default function Header() {
   return (
