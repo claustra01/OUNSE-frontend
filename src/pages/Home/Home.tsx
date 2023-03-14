@@ -2,17 +2,15 @@ import { Box, Button, TextField } from "@mui/material";
 import AppBar from '@mui/material/AppBar';
 import { useNavigate } from 'react-router-dom';
 import { useCookies } from "react-cookie";
-import { useState, useEffect } from 'react';
+import { useState, useEffect, useContext } from 'react';
 import axios from "axios";
 import './Home.css';
 import TimeLine from "../../components/TimeLine/TimeLine";
+import { UserContext } from '../../App';
 
-type User = {
-    userId: string
-    userName: string
-}
+function Home() {
 
-function Home({userId, userName}: User) {
+    const {userId} = useContext(UserContext)
 
     // ログアウト
     // eslint-disable-next-line @typescript-eslint/no-unused-vars
@@ -51,7 +49,7 @@ function Home({userId, userName}: User) {
       setTitle('')
       setBody('')
       setReload(reload+1)
-      
+
     }
 
     // TL取得
