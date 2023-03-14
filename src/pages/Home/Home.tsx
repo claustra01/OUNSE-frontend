@@ -5,6 +5,7 @@ import { useCookies } from "react-cookie";
 import { useState, useEffect } from 'react';
 import axios from "axios";
 import TimeLine from "../../components/TimeLine";
+import './Home.css';
 
 type User = {
     userId: string
@@ -112,7 +113,9 @@ function Home({userId, userName}: User) {
                 </Button>
                 {errorMessage}
             </Box>
-            <TimeLine timeLine={timeLine} />
+            <div className="TimeLine">
+                <TimeLine timeLine={timeLine} />
+            </div>
         </>
     )
  
