@@ -34,8 +34,6 @@ function App() {
             console.log(obj.data)
             setUserId(obj.data.UserId)
             setUserName(obj.data.Name)
-            console.log(userId)
-            console.log(userName)
         }
 
         auth()

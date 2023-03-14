@@ -5,7 +5,7 @@ import { useCookies } from "react-cookie";
 import { useState, useEffect } from 'react';
 import axios from "axios";
 
-type User=  {
+type User = {
     userId: string
     userName: string
 }
@@ -48,6 +48,16 @@ function Home({userId, userName}: User) {
       console.log(obj.data)
 
     }
+
+    // TL取得
+    useEffect(() => { 
+        const getTL = async () => {
+            const res = await axios.get('gettimeline', {params: {user_id: userId}})
+            const obj = JSON.parse(JSON.stringify(res));
+            console.log(obj.data)
+        }
+        if (userId !== '') getTL()
+    })
             
     return (
         <>
