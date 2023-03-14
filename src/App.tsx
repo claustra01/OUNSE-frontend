@@ -9,6 +9,7 @@ import Top from './pages/Top/Top'
 import LogIn from './pages/LogIn/LogIn'
 import SignUp from './pages/SignUp/SignUp'
 import Home from './pages/Home/Home';
+import Profile from './pages/Profile/Profile';
 
 type User = {
     userId: string,
@@ -55,6 +56,7 @@ function App() {
                     <Route path="/login" element={isAuth ? <Navigate replace to="/home" /> : <LogIn/>} />
                     <Route path="/signup" element={isAuth ? <Navigate replace to="/home" /> : <SignUp/>} />
                     <Route path="/home" element={isAuth ? <Home/> : <Navigate replace to="/" />} />
+                    <Route path="/profile" element={isAuth ? <Profile/> : <Navigate replace to="/" />} />
                 </Routes>
             </BrowserRouter>
         </UserContext.Provider>
