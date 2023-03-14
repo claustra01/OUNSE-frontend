@@ -50,11 +50,13 @@ function Home({userId, userName}: User) {
       console.log(obj.data)
       setTitle('')
       setBody('')
-
+      setReload(reload+1)
+      
     }
 
     // TL取得
     const [timeLine, setTimeLine] = useState([])
+    const [reload, setReload] = useState(0)
 
     useEffect(() => { 
         const getTL = async () => {
@@ -63,7 +65,7 @@ function Home({userId, userName}: User) {
             setTimeLine(obj.data)
         }
         if (userId !== '') getTL()
-    }, [userId])
+    }, [userId, reload])
             
     return (
         <>
