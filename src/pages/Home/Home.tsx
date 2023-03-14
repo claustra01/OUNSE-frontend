@@ -48,6 +48,8 @@ function Home({userId, userName}: User) {
       })
       const obj = JSON.parse(JSON.stringify(res));
       console.log(obj.data)
+      setTitle('')
+      setBody('')
 
     }
 
@@ -92,6 +94,7 @@ function Home({userId, userName}: User) {
                     label="title" 
                     variant="standard"
                     sx={{ m: "2em 3em 0 3em", height: "5em", width: "20em" }}
+                    value={title}
                     onChange={((e)=>{setTitle(e.target.value)})}
                 />
                 <TextField 
@@ -101,6 +104,7 @@ function Home({userId, userName}: User) {
                     id="post" 
                     label="post" 
                     sx={{ m:"1em 3em 2em 3em", height: "10em", width: "20em" }}
+                    value={body}
                     onChange={((e)=>{setBody(e.target.value)})}
                     />
                 <Button 
