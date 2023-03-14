@@ -1,7 +1,10 @@
 import { Box, Button, CardActions, CardContent, TextField, Typography } from "@mui/material";
+import { useState } from "react";
+import PostModal from "../modals/PostModal";
 
 function Post(props:{post: string}) {
 
+    const [openModal, setOpenModal] = useState(false)
     const obj = JSON.parse(JSON.stringify(props.post));
 
     return (
@@ -19,17 +22,12 @@ function Post(props:{post: string}) {
                     {obj.UserId} {obj.Time}
                 </Typography>
                 <Typography>
-                    <TextField
-                        disabled
-                        fullWidth
-                        multiline
-                        variant="outlined"
-                        value={obj.Body}
-                    />
+                    {obj.Body}
                 </Typography>
             </CardContent>
             <CardActions>
-                <Button size="small">Open</Button>
+                <Button size="small" onClick={() => (setOpenModal(true))}>Open</Button>
+                <PostModal openModal={openModal} setOpenModal={setOpenModal} post={props.post} />
             </CardActions>
         </Box>
     )
