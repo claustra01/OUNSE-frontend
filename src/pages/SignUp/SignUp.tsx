@@ -7,18 +7,20 @@ function SignUp() {
 
     const cardStyle = {
       display: "block",
+      //動き出すまで
       transitionDuration: "0.3s",
       height: "500px",
       width: "400px",
       variant: "outlined",
     };
-
+    //更新する関数を同時に呼び出しす
     const [name, setName] = useState('')
     const [userID, setUserID] = useState('')
     const [password, setPassword] = useState('')
     const [passwordConfirmation, setPasswordConfirmation] = useState('')
 
     const [errorMessage, setErrorMessage] = useState('')
+    //ページ遷移
     const navigate = useNavigate()
 
     const clickSignUp = async () => {
@@ -62,10 +64,15 @@ function SignUp() {
         display="flex"
         alignItems="center"
         justifyContent="center"
-        padding={20}
+        padding={15}
       >
         <Card style={cardStyle}>
-          <CardHeader title="SignUp" />
+          <CardHeader 
+          title="SignUp"
+          style={{color: "#00A83C",
+           textAlign: "center",
+           justifyContent:"center" }}
+           />
           <CardContent>
             <div>
             <TextField
@@ -112,7 +119,7 @@ function SignUp() {
             <Button 
               variant="contained"
               size="large"
-              color="secondary"
+              style={{backgroundColor: "#00A83C"}}
               onClick={clickSignUp}
             >
               Sign Up
