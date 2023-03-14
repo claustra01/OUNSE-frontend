@@ -2,6 +2,7 @@ import { Box, Button, Card, CardActions, CardContent, CardHeader, TextField } fr
 import axios from "axios";
 import { useState } from "react";
 import { useNavigate } from 'react-router-dom'
+import Header from "../../components/Header";
   
 function SignUp() {
 
@@ -60,6 +61,8 @@ function SignUp() {
     }
   
     return (
+      <div className="wrapper">
+        <Header/>
       <Box
         display="flex"
         alignItems="center"
@@ -128,6 +131,7 @@ function SignUp() {
           {errorMessage}
         </Card>
       </Box>
+      </div>
     );
     
 };
