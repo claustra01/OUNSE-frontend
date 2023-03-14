@@ -11,20 +11,26 @@ function Home() {
         const [cookie, setCookie, removeCookie] = useCookies(["token"]);
         const [title, setTitle] = useState('')
         const [post, setPost] = useState('')
+        const[friendID, setFriendID] = useState('');
         const navigate = useNavigate()
         const redirectSignOut = () => {
                 removeCookie("token");
                 navigate('/')
             }
+        
         const clickPost = async () => {
             console.log(title)
             console.log(post)
+        }
+        const clickFollow= async()=>{
+            console.log(friendID)
+    
         }
             
     return (
         <>
           <div className="background-color"/>
-            <AppBar position="static" style={{ backgroundColor: "#CDDFD3" }}>
+            <AppBar position="static" style={{ backgroundColor: "#FFD7A"}}>
                 < Button 
                     variant="contained" 
                     sx={{m: "1em 5em 1em 90em", 
@@ -66,7 +72,7 @@ function Home() {
                    width: "20em"
                 }}
                 onChange={((e)=>{setTitle(e.target.value)})}/>
-            {/* <TextField id="outlined-basic" label="Outlined" variant="outlined" sx={{m:"20em auto 5em auto", height: "30em", justifyContent: "center", alignItems: "center", display:"flex"}}/> */}
+            
                 <TextField 
                     required
                     multiline
@@ -79,6 +85,22 @@ function Home() {
                     }}
                     onChange={((e)=>{setPost(e.target.value)})}
                     />
+                    <TextField 
+                    required
+                    multiline
+                    id="friendID" 
+                    label="FriendID" 
+                    variant="outlined"
+                    sx={{m: "40rem 40rem 40rem 40rem", 
+                    width:"40em",
+                     justifyContent: "center", 
+                    display:"flex"}}
+                    onChange={((e)=>{setFriendID(e.target.value)})}
+                    />
+                    <Button 
+                    variant="contained"
+                    onClick={clickFollow}
+                    >follow</Button>
                 <Button 
                     variant="contained"
                     sx={{m:"14em 5em 10em 20em ", 
@@ -92,6 +114,8 @@ function Home() {
                     onClick={clickPost}
                     >投稿</Button>
                 </Box>
+                
+
         </>
     )
  
