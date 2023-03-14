@@ -3,21 +3,16 @@ import { useNavigate } from 'react-router-dom'
 import LogoImage from "./ounce.png"
 import Grid from '@mui/material/Grid';
 
-
 function Top() {
 
     const navigate = useNavigate()
-    
     const redirectLogIn = () => {
         navigate('/login')
     }
-    
     const redirectSignUp = () => {
         navigate('/signup')
     }
-
     return (
-        
         <div className="Button" >
             <Grid item  sx={{m: "5em 10em 0 35em" }}>
                 <img src={LogoImage} alt="ounce" width="350px"/>
@@ -45,5 +40,4 @@ function Top() {
         </div>
     );
 };
-
 export default Top
