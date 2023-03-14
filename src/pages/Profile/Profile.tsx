@@ -3,6 +3,7 @@ import { useState, useContext, useEffect } from 'react';
 import { UserContext } from '../../App';
 import axios from 'axios';
 import Header from '../../components/Header';
+import FriendList from '../../components/FriendList';
 
 function Profile() {
 
@@ -37,6 +38,7 @@ function Profile() {
             <Header/>
             <TextField onChange={(e) => setFriendId(e.target.value)} />
             <Button onClick={reqFriend}>リクエスト</Button>
+            <FriendList friends={friendList} />
         </>
     )
     
