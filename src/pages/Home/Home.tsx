@@ -4,8 +4,8 @@ import { useNavigate } from 'react-router-dom';
 import { useCookies } from "react-cookie";
 import { useState, useEffect } from 'react';
 import axios from "axios";
-import TimeLine from "../../components/TimeLine";
 import './Home.css';
+import TimeLine from "../../components/TimeLine/TimeLine";
 
 type User = {
     userId: string

@@ -1,10 +1,10 @@
-import { useEffect } from "react"
-import Post from "./Post"
+import Post from "../Post"
+import "./TimeLine.css"
 
 function TimeLine(props: {timeLine: string[]}) {
 
     return (
-        <div>
+        <div className="box">
             {props.timeLine.map((v) => (
                 <Post post={v} />
             ))}
