@@ -1,4 +1,4 @@
-import { Modal, Box, TextField } from "@mui/material"
+import { Modal, Box, TextField, Button } from "@mui/material"
 import { useState } from "react";
 
 type MyProps = {
@@ -52,9 +52,19 @@ function PostModal({openModal, setOpenModal, post}: MyProps) {
                     id="post" 
                     label="post" 
                     sx={{ m:"1em 3em 2em 3em", height: "5em", width: "35em" }}
-                    value={obj.Body}
+                    defaultValue={obj.Body}
                     onChange={((e)=>{setBody(e.target.value)})}
                 />
+                <Button 
+                    variant="contained"
+                    sx={{ m:"21em 5em 10em 38em", height: "4em", width: "6em", textAlign:"center", justifyContent: "center", alignItems: "center", display:"flex" }} 
+                    style={{ backgroundColor: "#388e3c" }}
+                >保存</Button>
+                <Button 
+                    variant="contained"
+                    sx={{ m:"-52em 0em 10em 40em", height: "4em", width: "6em", textAlign:"center", justifyContent: "center", alignItems: "center", display:"flex" }} 
+                    style={{ backgroundColor: "#e94709" }}
+                >削除</Button>
             </Box>
         </Modal>
     )
