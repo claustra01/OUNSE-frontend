@@ -2,9 +2,18 @@ import { Box, Button, TextField } from '@mui/material';
 import { useState, useContext, useEffect } from 'react';
 import { UserContext } from '../../App';
 import axios from 'axios';
+import styled from 'styled-components';
 import Header from '../../components/Header';
 import FriendList from '../../components/FriendList';
 import RequestList from '../../components/RequestList';
+
+const FriendListStyle = styled.div`
+    margin-left: 30rem
+`;
+
+const RequestListStyle = styled.div`
+    margin-top: 5rem
+`;
 
 function Profile() {
 
@@ -39,6 +48,9 @@ function Profile() {
     return (
         <>
             <Header/>
+            <FriendListStyle>
+                <FriendList friends={friendList} />
+            </FriendListStyle>
             <Box
                 sx={{
                     width: '30rem',
@@ -60,8 +72,9 @@ function Profile() {
                     onClick={reqFriend}
                 >リクエスト送信</Button>
             </Box>
-            <RequestList requests={requestList} />
-            <FriendList friends={friendList} />
+            <RequestListStyle>
+                <RequestList requests={requestList} />
+            </RequestListStyle>
         </>
     )
     
