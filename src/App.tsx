@@ -25,8 +25,7 @@ function App() {
         f()
     })
 
-    return (
-        
+    return (   
         <BrowserRouter>
             <Routes>
                 <Route path="/" element={isAuth ? <Navigate replace to="/home" /> : <Top/>} />

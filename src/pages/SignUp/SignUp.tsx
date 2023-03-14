@@ -67,7 +67,12 @@ function SignUp() {
         padding={20}
       >
         <Card style={cardStyle}>
-          <CardHeader title="SignUp" />
+          <CardHeader 
+          title="SignUp"
+          style={{color: "#00A83C",
+           textAlign: "center",
+           justifyContent:"center" }}
+           />
           <CardContent>
             <div>
             <TextField
