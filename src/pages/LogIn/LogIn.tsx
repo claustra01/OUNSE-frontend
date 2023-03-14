@@ -4,7 +4,6 @@ import { useNavigate } from 'react-router-dom'
 import { useCookies } from "react-cookie";
 import axios from "axios";
 import Header from "../../components/Header"
-import { width } from "@mui/system";
 
 function LogIn() {
 
@@ -94,14 +93,15 @@ function LogIn() {
               </div>
             </CardContent>
 
-            <div className="ErrorTextbutton" style={{flexWrap:"nowrap"}}>
+            
             <CardActions>
                 <div className="loginButton" >
-                <div style={{ color: "#FF3131",
-                  display:"flex",  margin: "0 19em 0 1em", 
-                  whiteSpace: "nowrap"}}>
-            {errorMessage }
-            </div>
+                  <div style={{ color: "#FF3131",
+                      display:"flex",  margin: "0 19em 0 1em", 
+                      whiteSpace: "nowrap"}}>
+            
+           
+            <div className="ErrorTextbutton" style={{flexWrap:"nowrap"}}>
                   <Button
                     variant="contained"
                     sx={{m: "0 7em 10em 20em",
@@ -112,11 +112,16 @@ function LogIn() {
                   >
                     Login
                   </Button>
+                  <div style={{color: "#FF3131", whiteSpace: "nowrap", margin:"-11em 12em 4em 0em"}}>
+                         {errorMessage}
+                  </div>
+                </div>
+                </div>
                 </div>
                 
             </CardActions >
             
-            </div>
+    
               
           </Card>
         </Box>
