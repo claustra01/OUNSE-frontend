@@ -13,12 +13,13 @@ function Top() {
         navigate('/signup')
     }
     return (
-        <div className="wrapper">
+        <div className="wrapper" style={{height: "100vh"}}>
             <Header/>
-            <div className="Button" >
-                <Grid item  sx={{m: "2em 10em 0 35em" }}>
-                    <img src={LogoImage} alt="ounce" width="350px"/>
-                </Grid>
+            <div style={{justifyContent:"centern" , alignItems: "center", display:"flex", flexDirection: "column"}}>
+                
+                    <img src={LogoImage} alt="ounce" width="200px"></img>
+                  
+            
                 <div className="itemCenter" >
                     <Button
                         className="marginAuto"
