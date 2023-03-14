@@ -5,7 +5,6 @@ import Grid from '@mui/material/Grid';
 import Header from "../../components/Header";
 
 function Top() {
-
     const navigate = useNavigate()
     const redirectLogIn = () => {
 

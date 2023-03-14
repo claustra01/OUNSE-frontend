@@ -34,14 +34,13 @@ function LogIn() {
         },
       },
     }
-
     const clickLogIn = async () => {
       
       // 入力エラー
       if (userID === '') {
         setErrorMessage('UserID is empty')
         return
-        
+
       } else if (password === '') {
         setErrorMessage('password is empty')
         return
