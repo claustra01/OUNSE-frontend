@@ -22,13 +22,7 @@ function Post(props:{post: string}) {
                     {obj.UserId} {obj.Time}
                 </Typography>
                 <Typography>
-                    <TextField
-                        disabled
-                        fullWidth
-                        multiline
-                        variant="outlined"
-                        value={obj.Body}
-                    />
+                    {obj.Body}
                 </Typography>
             </CardContent>
             <CardActions>
