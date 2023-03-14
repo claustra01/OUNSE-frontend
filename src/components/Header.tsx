@@ -6,7 +6,6 @@ export default function Header() {
     <Box sx={{ flexGrow: 1 }}>
       <AppBar position="static"
        style={{backgroundColor: "#0DA242", height:"40px"}}>
-      
       </AppBar>
     </Box>
   );

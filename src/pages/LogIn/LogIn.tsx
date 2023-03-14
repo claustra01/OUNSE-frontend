@@ -5,8 +5,6 @@ import { useCookies } from "react-cookie";
 import axios from "axios";
 import Header from "../../components/Header"
 
-
-
 function LogIn() {
 
     const cardStyle = {
@@ -108,7 +106,7 @@ function LogIn() {
                 <div className="loginButton" style={{textAlign: "center",justifyContent:"center", display:"flex", flexDirection: "column"}}>
                   <Button
                     variant="contained"
-                     sx={{m: "0 4rem 4rem 10rem", textAlign: "center",justifyContent:"center",  display:"flex", flexDirection: "column"}}
+                    sx={{m: "0 auto", textAlign: "center",justifyContent:"center"}}
                     style={{backgroundColor: "#00A83C"}}
                     onClick={clickLogIn}
                   >
