@@ -1,32 +1,12 @@
 import { Modal, Box, TextField, Button } from "@mui/material"
 import { useContext, useState } from "react";
 import { UserContext } from "../App";
+import axios from "axios";
 
 type MyProps = {
     openModal: boolean,
     setOpenModal: React.Dispatch<React.SetStateAction<boolean>>,
     post: string
-}
-
-function EditButton(writer: string, reader: string) {
-    if (writer === reader) {
-        return (
-            <>
-                <Button 
-                    variant="contained"
-                    sx={{ m:"21em 5em 10em 38em", height: "4em", width: "6em", textAlign:"center", justifyContent: "center", alignItems: "center", display:"flex" }} 
-                    style={{ backgroundColor: "#388e3c" }}
-                >保存</Button>
-                <Button 
-                    variant="contained"
-                    sx={{ m:"-52em 0em 10em 40em", height: "4em", width: "6em", textAlign:"center", justifyContent: "center", alignItems: "center", display:"flex" }} 
-                    style={{ backgroundColor: "#e94709" }}
-                >削除</Button>
-            </>
-        )
-    } else {
-        return <></>
-    }
 }
 
 function PostModal({openModal, setOpenModal, post}: MyProps) {
@@ -51,6 +31,36 @@ function PostModal({openModal, setOpenModal, post}: MyProps) {
         boxShadow: 24,
         p: 4,
     };
+
+    // 投稿削除
+    const removePost = async () =>{
+        const res = await axios.delete('deletepost', {params: {id: obj.Id}})
+        setOpenModal(false)
+        console.log(res.data)  
+    }
+
+    // ボタン表示切替
+    const EditButton = (writer: string, reader: string) => {
+        if (writer === reader) {
+            return (
+                <>
+                    <Button 
+                        variant="contained"
+                        sx={{ m:"21em 5em 10em 38em", height: "4em", width: "6em", textAlign:"center", justifyContent: "center", alignItems: "center", display:"flex" }} 
+                        style={{ backgroundColor: "#388e3c" }}
+                    >保存</Button>
+                    <Button 
+                        variant="contained"
+                        sx={{ m:"-52em 0em 10em 40em", height: "4em", width: "6em", textAlign:"center", justifyContent: "center", alignItems: "center", display:"flex" }} 
+                        style={{ backgroundColor: "#e94709" }}
+                        onClick={ removePost }
+                    >削除</Button>
+                </>
+            )
+        } else {
+            return <></>
+        }
+    }
 
     return ( 
         <Modal
