@@ -1,4 +1,4 @@
-import { Box, Button, Card, CardActions, CardContent, CardHeader, TextField } from "@mui/material";
+import { Box, Button, TextField } from "@mui/material";
 import AppBar from '@mui/material/AppBar';
 import Toolbar from '@mui/material/Toolbar';
 import Typography from '@mui/material/Typography';
@@ -7,9 +7,9 @@ import { useNavigate } from 'react-router-dom';
 import { useCookies } from "react-cookie";
 import { useState } from "react";
 
-
-
 function Home() {
+
+        // eslint-disable-next-line @typescript-eslint/no-unused-vars
         const [cookie, setCookie, removeCookie] = useCookies(["token"]);
         const [title, setTitle] = useState('')
         const [post, setPost] = useState('')
@@ -20,11 +20,12 @@ function Home() {
                 navigate('/')
             }
         
-        const clickPost = async () => {
+        const clickPost = () => {
             console.log(title)
             console.log(post)
         }
-        const clickFollow= async()=>{
+
+        const clickFollow = ()=>{
             console.log(friendID)
     
         }
@@ -116,8 +117,6 @@ function Home() {
                     onClick={clickPost}
                     >投稿</Button>
                 </Box>
-                
-
         </>
     )
  
