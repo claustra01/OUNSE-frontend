@@ -6,7 +6,6 @@ import Header from "../../components/Header";
   
 function SignUp() {
 
-  
 
     const cardStyle = {
       display: "block",

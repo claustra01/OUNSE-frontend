@@ -30,7 +30,7 @@ function LogIn() {
         '& fieldset': {
           borderColor: '#00A83C',    
           // 通常時のボーダー色(アウトライン)
-          
+
         },
       },
     }
@@ -41,6 +41,7 @@ function LogIn() {
       if (userID === '') {
         setErrorMessage('UserID is empty')
         return
+        
       } else if (password === '') {
         setErrorMessage('password is empty')
         return

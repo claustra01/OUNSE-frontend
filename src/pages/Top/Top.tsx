@@ -8,13 +8,12 @@ function Top() {
 
     const navigate = useNavigate()
     const redirectLogIn = () => {
-        
+
         navigate('/login')
     }
     const redirectSignUp = () => {
         navigate('/signup')
     }
-
     return (
         <div className="wrapper">
             <Header/>
