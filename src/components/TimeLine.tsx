@@ -1,13 +1,14 @@
 import { useEffect } from "react"
+import Post from "./Post"
 
-function TimeLine(props: {timeLine: String[]}) {
-
-    useEffect(() => { 
-        console.log(props.timeLine)
-    })
+function TimeLine(props: {timeLine: string[]}) {
 
     return (
-        <>timeline</>
+        <div>
+            {props.timeLine.map((v) => (
+                <Post post={v} />
+            ))}
+        </div>
     )
 }
 
