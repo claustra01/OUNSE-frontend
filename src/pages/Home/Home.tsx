@@ -28,6 +28,11 @@ function Home() {
         removeCookie("token");
         navigate('/')
     }
+
+    // プロフィールに遷移
+    const redirectProfile = () => {
+        navigate('/profile')
+    }
     
     // 新規投稿
     const [title, setTitle] = useState('')
@@ -119,10 +124,9 @@ function Home() {
                     sx={{ m:"14em 5em 10em 20em ", height: "3em", textAlign:"center", justifyContent: "center", alignItems: "center", display:"flex" }} 
                     style={{ backgroundColor: "#388e3c" }}
                     onClick={clickPost}
-                >
-                  投稿
-                </Button>
+                >投稿</Button>
                 {errorMessage}
+                <Button onClick={redirectProfile}>プロフィール</Button>
             </Box>
             <div className="TimeLine">
                 <ReloadContext.Provider value={{reload, setReload}}>
