@@ -66,7 +66,7 @@ function SignUp() {
         display="flex"
         alignItems="center"
         justifyContent="center"
-        padding={4 }
+        padding={15}
       >
         <Card style={cardStyle}>
           <CardHeader 
@@ -118,17 +118,22 @@ function SignUp() {
         
           </CardContent>
           <CardActions>
+            <div> 
             <Button 
               variant="contained"
               size="large"
-              style={{backgroundColor: "#00A83C"}}
-              sx={{m: "0 auto"}}
+              style={{backgroundColor: "#00A83C", margin:"0 1em 0 17em"}}
               onClick={clickSignUp}
             >
               Sign Up
             </Button>
+            <div style={{color: "#FF3131", whiteSpace: "nowrap", margin:"-3em 10em 4em 1em"}}>
+              {errorMessage}
+            </div>
+
+            </div>
           </CardActions>
-          {errorMessage}
+
         </Card>
       </Box>
     </>)
