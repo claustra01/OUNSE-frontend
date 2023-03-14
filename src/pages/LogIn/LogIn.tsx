@@ -94,12 +94,19 @@ function LogIn() {
               </div>
             </CardContent>
 
-            <div className="ErrorTextbutton" style={{margin: "0 20em 10em 10em ", textAlign: "center",justifyContent:"center"}}>
+            <div className="ErrorTextbutton" style={{flexWrap:"nowrap"}}>
             <CardActions>
                 <div className="loginButton" >
+                <div style={{ color: "#FF3131",
+                  display:"flex",  margin: "0 19em 0 1em", 
+                  whiteSpace: "nowrap"}}>
+            {errorMessage }
+            </div>
                   <Button
                     variant="contained"
-                    sx={{m: "0 auto", textAlign: "center",justifyContent:"center"}}
+                    sx={{m: "0 7em 10em 20em",
+                    // textAlign: "center",justifyContent:"center"
+                  }}
                     style={{backgroundColor: "#00A83C"}}
                     onClick={clickLogIn}
                   >
@@ -108,9 +115,7 @@ function LogIn() {
                 </div>
                 
             </CardActions >
-            <div style={{ display:"flex",  margin: "0 3em 4em 9em", justifyContent:"center", whiteSpace: "nowrap"}}>
-            {errorMessage }
-            </div>
+            
             </div>
               
           </Card>
