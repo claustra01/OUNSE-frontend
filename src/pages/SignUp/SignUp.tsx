@@ -114,7 +114,7 @@ function SignUp() {
             <Button 
               variant="contained"
               size="large"
-              color="secondary"
+              style={{backgroundColor: "#00A83C"}}
               onClick={clickSignUp}
             >
               Sign Up

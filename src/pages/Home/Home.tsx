@@ -17,28 +17,27 @@ function Home() {
 
     return (
         <>
-
-            <div className="background-color"/>
+          <div className="background-color"/>
             <AppBar position="static" style={{ backgroundColor: "#CDDFD3" }}>
                 <Button 
-                variant="contained" 
-                sx={{m: "1em 5em 1em 90em", 
-                justifyContent:"center", 
-                textAlign: "center"
-                 }}
-                 onClick={redirectSignOut}
-                style={{ backgroundColor: "#388e3c" }}
-                
-                >SignOut
+                    variant="contained" 
+                    sx={{m: "1em 5em 1em 90em", 
+                    justifyContent:"center", 
+                    textAlign: "center"
+                    }}
+                    onClick={redirectSignOut}
+                    style={{ backgroundColor: "#388e3c" }}
+                    
+                    >SignOut
                     <Container maxWidth="xl">
-                    <Toolbar disableGutters>
-                    <Typography
-                    variant="h6"
-                    noWrap
-                    component="div"
-                    sx={{ mr: 2, display: { xs: 'none', md: 'flex'} }}
-                    >
-                    </Typography>
+                        <Toolbar disableGutters>
+                            <Typography
+                                variant="h6"
+                                noWrap
+                                component="div"
+                                sx={{ mr: 2, display: { xs: 'none', md: 'flex'} }}
+                                >
+                            </Typography>
                     </Toolbar>
                 </Container>
                 </Button> 
@@ -53,22 +52,22 @@ function Home() {
                 >
     
             {/* <TextField id="outlined-basic" label="Outlined" variant="outlined" sx={{m:"20em auto 5em auto", height: "30em", justifyContent: "center", alignItems: "center", display:"flex"}}/> */}
-            <TextField 
-            required
-            multiline
-            minRows="14"
-            id="outlined-basic" 
-            label="input" 
-            sx={{m:"5em 3em 5em 3em", 
-            height: "10em",
-            width: "20em"
-            }}/>
-            <Button 
-            variant="contained"
-            sx={{m:"10em 5em 10em 20em ", height: "3em"}} 
-            style={{ backgroundColor: "#388e3c" }}
-            >投稿</Button>
-            </Box>
+                <TextField 
+                    required
+                    multiline
+                    minRows="14"
+                    id="outlined-basic" 
+                    label="input" 
+                    sx={{m:"5em 3em 5em 3em", 
+                    height: "10em",
+                    width: "20em"
+                }}/>
+                <Button 
+                    variant="contained"
+                    sx={{m:"10em 5em 10em 20em ", height: "3em"}} 
+                    style={{ backgroundColor: "#388e3c" }}
+                    >投稿</Button>
+                </Box>
         </>
     )
 }
