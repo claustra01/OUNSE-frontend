@@ -67,7 +67,7 @@ function LogIn() {
 
    
     return (
-      <div>
+      <div style={{height: "100vh"}}>
 
         <div className="wrapper">
           <Header/>
@@ -75,10 +75,10 @@ function LogIn() {
           display="flex"
           alignItems="center"
           justifyContent="center"
-          padding={20}
+          padding={5}
         >
           
-          <Card style={cardStyle}>
+          <Card style={cardStyle} >
             <CardHeader title="LogIn" 
             style={{color: "#00A83C", textAlign: "center",justifyContent:"center" }}/>
             <CardContent>
@@ -104,18 +104,18 @@ function LogIn() {
               </div>
             </CardContent>
             <CardActions>
-              <div className="Button">
-                <div className="loginButton">
+              {/* <div className="Button" style={{textAlign: "center",justifyContent:"center", display:"flex", flexDirection: "column"}} > */}
+                <div className="loginButton" style={{textAlign: "center",justifyContent:"center", display:"flex", flexDirection: "column"}}>
                   <Button
                     variant="contained"
-                    sx={{m: "0 auto", textAlign: "center",justifyContent:"center"}}
+                     sx={{m: "0 4rem 4rem 10rem", textAlign: "center",justifyContent:"center",  display:"flex", flexDirection: "column"}}
                     style={{backgroundColor: "#00A83C"}}
                     onClick={clickLogIn}
                   >
                     Log In
                   </Button>
                 </div>
-              </div>
+          
             </CardActions>
             {errorMessage}
           </Card>
