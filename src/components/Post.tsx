@@ -27,7 +27,7 @@ function Post(props:{post: string}) {
             </CardContent>
             <CardActions>
                 <Button size="small" onClick={() => (setOpenModal(true))}>Open</Button>
-                <PostModal openModal={openModal} setOpenModal={setOpenModal} />
+                <PostModal openModal={openModal} setOpenModal={setOpenModal} post={props.post} />
             </CardActions>
         </Box>
     )
