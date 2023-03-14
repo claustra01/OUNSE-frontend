@@ -6,6 +6,8 @@ import Header from "../../components/Header";
   
 function SignUp() {
 
+  
+
     const cardStyle = {
       display: "block",
       //動き出すまで

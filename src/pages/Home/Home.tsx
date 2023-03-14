@@ -87,6 +87,7 @@ function Home() {
                     }}
                     onChange={((e)=>{setPost(e.target.value)})}
                     />
+                    
                     <TextField 
                     required
                     multiline
