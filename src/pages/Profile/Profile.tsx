@@ -2,6 +2,7 @@ import { Button, TextField } from '@mui/material';
 import { useState, useContext, useEffect } from 'react';
 import { UserContext } from '../../App';
 import axios from 'axios';
+import Header from '../../components/Header';
 
 function Profile() {
 
@@ -33,6 +34,7 @@ function Profile() {
 
     return (
         <>
+            <Header/>
             <TextField onChange={(e) => setFriendId(e.target.value)} />
             <Button onClick={reqFriend}>リクエスト</Button>
         </>
