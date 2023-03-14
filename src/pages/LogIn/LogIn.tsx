@@ -23,14 +23,6 @@ function LogIn() {
 
     const [cookie, setCookie] = useCookies(['token']);
 
-    const myStyle = {
-      '& .MuiOutlinedInput-root': {
-        '& fieldset': {
-          borderColor: '#00A83C',    
-          // 通常時のボーダー色(アウトライン)
-        },
-      },
-    }
     const clickLogIn = async () => {
       
       // 入力エラー
@@ -109,6 +101,8 @@ function LogIn() {
                     style={{backgroundColor: "#00A83C"}}
                     onClick={clickLogIn}
                   >
+                    Login
+                  </Button>
                 </div>
           
             </CardActions>

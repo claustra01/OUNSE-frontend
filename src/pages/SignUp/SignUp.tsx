@@ -60,6 +60,8 @@ function SignUp() {
     }
   
     return (
+    <>
+      <Header/>
       <Box
         display="flex"
         alignItems="center"
@@ -128,7 +130,7 @@ function SignUp() {
           {errorMessage}
         </Card>
       </Box>
-    )
+    </>)
 };
 
 export default SignUp
