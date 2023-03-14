@@ -12,14 +12,14 @@ type MyProps = {
 
 function PostModal({openModal, setOpenModal, post}: MyProps) {
 
+    const obj = JSON.parse(JSON.stringify(post));
+
     const {userId} = useContext(UserContext)
     const {reload, setReload} = useContext(ReloadContext)
 
-    const [title, setTitle] = useState('')
-    const [body, setBody] = useState('')
+    const [title, setTitle] = useState(obj.Title)
+    const [body, setBody] = useState(obj.Body)
     
-    const obj = JSON.parse(JSON.stringify(post));
-
     const style = {
         position: 'absolute',
         top: '50%',
@@ -34,8 +34,20 @@ function PostModal({openModal, setOpenModal, post}: MyProps) {
         p: 4,
     };
 
+    // 投稿編集
+    const editPost = async () => {
+        const res = await axios.put('editpost', {
+            id: obj.Id,
+            title: title,
+            body: body
+        })
+        setReload(reload+1)
+        setOpenModal(false)
+        console.log(res.data)  
+    }
+
     // 投稿削除
-    const removePost = async () =>{
+    const removePost = async () => {
         const res = await axios.delete('deletepost', {params: {id: obj.Id}})
         setReload(reload+1)
         setOpenModal(false)
@@ -51,6 +63,7 @@ function PostModal({openModal, setOpenModal, post}: MyProps) {
                         variant="contained"
                         sx={{ m:"21em 5em 10em 38em", height: "4em", width: "6em", textAlign:"center", justifyContent: "center", alignItems: "center", display:"flex" }} 
                         style={{ backgroundColor: "#388e3c" }}
+                        onClick={ editPost }
                     >保存</Button>
                     <Button 
                         variant="contained"
