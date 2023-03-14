@@ -93,12 +93,10 @@ function LogIn() {
               </div>
             </CardContent>
             <CardActions>
-              {/* <div className="Button" style={{textAlign: "center",justifyContent:"center", display:"flex", flexDirection: "column"}} > */}
-                <div className="loginButton" style={{textAlign: "center",justifyContent:"center", display:"flex", flexDirection: "column"}}>
+                <div className="loginButton" >
                   <Button
                     variant="contained"
-                    sx={{m: "0 auto", textAlign: "center",justifyContent:"center"}}
-                    style={{backgroundColor: "#00A83C"}}
+                    style={{ textAlign: "center",justifyContent:"center"}}
                     onClick={clickLogIn}
                   >
                     Login
