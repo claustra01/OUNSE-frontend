@@ -4,6 +4,7 @@ import { UserContext } from '../../App';
 import axios from 'axios';
 import Header from '../../components/Header';
 import FriendList from '../../components/FriendList';
+import RequestList from '../../components/RequestList';
 
 function Profile() {
 
@@ -59,6 +60,7 @@ function Profile() {
                     onClick={reqFriend}
                 >リクエスト送信</Button>
             </Box>
+            <RequestList requests={requestList} />
             <FriendList friends={friendList} />
         </>
     )
