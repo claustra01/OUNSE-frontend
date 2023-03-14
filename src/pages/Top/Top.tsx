@@ -3,6 +3,7 @@ import { useNavigate } from 'react-router-dom'
 import LogoImage from "./ounce.png"
 import Grid from '@mui/material/Grid'; 
 import Header from "../../components/Header";
+
 function Top() {
     const navigate = useNavigate()
     const redirectLogIn = () => {
@@ -39,7 +40,7 @@ function Top() {
                         ● 　　　　　　　　　SignUp　　　　　　　　　●
                     </Button>
 
-                </div>
+
             </div>
         </div>
     );

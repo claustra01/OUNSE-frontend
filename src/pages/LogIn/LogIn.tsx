@@ -62,9 +62,8 @@ function LogIn() {
       console.log(cookie)
       navigate('/home')
     }
-
-   
     return (
+    
       <div style={{height: "100vh"}}>
 
         <div className="wrapper">
@@ -110,8 +109,6 @@ function LogIn() {
                     style={{backgroundColor: "#00A83C"}}
                     onClick={clickLogIn}
                   >
-                    Log In
-                  </Button>
                 </div>
           
             </CardActions>

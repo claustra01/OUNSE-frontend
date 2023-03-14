@@ -65,8 +65,6 @@ function Home({userId, userName}: User) {
             
     return (
         <>
-          <div className="wrapper">
-            <Header/>
           <div className="background-color"/>
             <AppBar position="static" style={{ backgroundColor: "#FFD7A"}}>
                 < Button 

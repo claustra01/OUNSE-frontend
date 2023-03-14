@@ -60,8 +60,6 @@ function SignUp() {
     }
   
     return (
-      <div className="wrapper">
-        <Header/>
       <Box
         display="flex"
         alignItems="center"
@@ -130,8 +128,6 @@ function SignUp() {
           {errorMessage}
         </Card>
       </Box>
-      </div>
-    
     )
 };
 
