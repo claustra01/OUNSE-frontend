@@ -1,5 +1,6 @@
 import { Modal, Box, TextField, Button } from "@mui/material"
-import { useState } from "react";
+import { useContext, useState } from "react";
+import { UserContext } from "../App";
 
 type MyProps = {
     openModal: boolean,
@@ -7,7 +8,30 @@ type MyProps = {
     post: string
 }
 
+function EditButton(writer: string, reader: string) {
+    if (writer === reader) {
+        return (
+            <>
+                <Button 
+                    variant="contained"
+                    sx={{ m:"21em 5em 10em 38em", height: "4em", width: "6em", textAlign:"center", justifyContent: "center", alignItems: "center", display:"flex" }} 
+                    style={{ backgroundColor: "#388e3c" }}
+                >保存</Button>
+                <Button 
+                    variant="contained"
+                    sx={{ m:"-52em 0em 10em 40em", height: "4em", width: "6em", textAlign:"center", justifyContent: "center", alignItems: "center", display:"flex" }} 
+                    style={{ backgroundColor: "#e94709" }}
+                >削除</Button>
+            </>
+        )
+    } else {
+        return <></>
+    }
+}
+
 function PostModal({openModal, setOpenModal, post}: MyProps) {
+
+    const {userId} = useContext(UserContext)
 
     const [title, setTitle] = useState('')
     const [body, setBody] = useState('')
@@ -55,16 +79,7 @@ function PostModal({openModal, setOpenModal, post}: MyProps) {
                     defaultValue={obj.Body}
                     onChange={((e)=>{setBody(e.target.value)})}
                 />
-                <Button 
-                    variant="contained"
-                    sx={{ m:"21em 5em 10em 38em", height: "4em", width: "6em", textAlign:"center", justifyContent: "center", alignItems: "center", display:"flex" }} 
-                    style={{ backgroundColor: "#388e3c" }}
-                >保存</Button>
-                <Button 
-                    variant="contained"
-                    sx={{ m:"-52em 0em 10em 40em", height: "4em", width: "6em", textAlign:"center", justifyContent: "center", alignItems: "center", display:"flex" }} 
-                    style={{ backgroundColor: "#e94709" }}
-                >削除</Button>
+                {EditButton(obj.UserId, userId)}
             </Box>
         </Modal>
     )
