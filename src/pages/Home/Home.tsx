@@ -6,7 +6,8 @@ import Container from '@mui/material/Container';
 import { useNavigate } from 'react-router-dom';
 import { useCookies } from "react-cookie";
 import { useState } from "react";
-import Header from "../../components/Header"
+
+
 
 function Home() {
         const [cookie, setCookie, removeCookie] = useCookies(["token"]);
@@ -26,11 +27,10 @@ function Home() {
         const clickFollow= async()=>{
             console.log(friendID)
     
-        }      
+        }
+            
     return (
         <>
-          <div className="wrapper">
-            <Header/>
           <div className="background-color"/>
             <AppBar position="static" style={{ backgroundColor: "#FFD7A"}}>
                 < Button 
@@ -117,7 +117,7 @@ function Home() {
                     >投稿</Button>
                 </Box>
                 
-            </div>
+
         </>
     )
  
