@@ -62,7 +62,7 @@ function Profile() {
             <Header/>
             <Grid container spacing={2}>
                 <Grid item xs={4}>
-                    <Box sx={{ height: '10rem', width: '30rem', opacity: 0.9 }} style={{ backgroundColor: "#FFFCEF" }}>
+                    <Box sx={{ height: '10rem', width: '30%', opacity: 0.9 }} style={{ backgroundColor: "#FFFCEF" }}>
                         <TextField
                             id="friendReq" 
                             label="Friend Request" 
