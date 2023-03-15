@@ -25,7 +25,8 @@ function Post(props:{post: string}) {
                     />
                 </Typography>
                 <Typography color="gray">
-                    {"投稿者: " + obj.UserId + " / 最終更新: " + obj.Time}
+                    {"投稿者: " + obj.UserId}<br/>
+                    {"最終更新: " + obj.Time}
                 </Typography>
                 <Typography color="common.gray">
                     {obj.Body}
