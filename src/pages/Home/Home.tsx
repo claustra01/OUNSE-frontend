@@ -1,13 +1,11 @@
 import { Box, Button, TextField } from "@mui/material";
 import { useNavigate } from 'react-router-dom';
-import { useCookies } from "react-cookie";
 import { useState, useEffect, useContext, createContext } from 'react';
 import axios from "axios";
 import './Home.css';
 import TimeLine from "../../components/TimeLine/TimeLine";
 import { UserContext } from '../../App';
 import Header from '../../components/Header'
-// import Diversity1Icon from '@mui/icons-material/Diversity1';
 
 type Reload = {
     reload: number,
@@ -20,17 +18,8 @@ function Home() {
 
     const {userId} = useContext(UserContext)
 
-    // ログアウト
-    // eslint-disable-next-line @typescript-eslint/no-unused-vars
-    const [cookie, setCookie, removeCookie] = useCookies(["token"]);
-    const navigate = useNavigate()
-
-    const redirectSignOut = () => {
-        removeCookie("token");
-        navigate('/')
-    }
-
     // プロフィールに遷移
+    const navigate = useNavigate()
     const redirectProfile = () => {
         navigate('/profile')
     }
@@ -82,18 +71,6 @@ function Home() {
             <div className="wrapper" style={{height: "100vh"}}>
                 <Header />
                     <div className="background-color"/>
-                        
-                            < Button 
-                                variant="contained" 
-                                sx={{m: "-5em 2em 0 95em", 
-                                justifyContent:"center",
-                                textAlign: "center",
-                                }}
-                                onClick={redirectSignOut}
-                                style={{ backgroundColor: "#388e3c" }}
-                            >
-                                SignOut
-                            </Button> 
                         <Box
                             sx={{
                                 width: 400,
