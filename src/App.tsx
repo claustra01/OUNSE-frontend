@@ -16,6 +16,7 @@ type User = {
     userName: string
 }
 
+export const AuthContext = createContext(false)
 export const UserContext = createContext({} as User)
 
 function App() {
@@ -49,17 +50,19 @@ function App() {
     })
 
     return (
-        <UserContext.Provider value={{userId, userName}}>
-            <BrowserRouter>
-                <Routes>
-                    <Route path="/" element={isAuth ? <Navigate replace to="/home" /> : <Top/>} />
-                    <Route path="/login" element={isAuth ? <Navigate replace to="/home" /> : <LogIn/>} />
-                    <Route path="/signup" element={isAuth ? <Navigate replace to="/home" /> : <SignUp/>} />
-                    <Route path="/home" element={isAuth ? <Home/> : <Navigate replace to="/" />} />
-                    <Route path="/profile" element={isAuth ? <Profile/> : <Navigate replace to="/" />} />
-                </Routes>
-            </BrowserRouter>
-        </UserContext.Provider>
+        <AuthContext.Provider value={isAuth}>
+            <UserContext.Provider value={{userId, userName}}>
+                <BrowserRouter>
+                    <Routes>
+                        <Route path="/" element={isAuth ? <Navigate replace to="/home" /> : <Top/>} />
+                        <Route path="/login" element={isAuth ? <Navigate replace to="/home" /> : <LogIn/>} />
+                        <Route path="/signup" element={isAuth ? <Navigate replace to="/home" /> : <SignUp/>} />
+                        <Route path="/home" element={isAuth ? <Home/> : <Navigate replace to="/" />} />
+                        <Route path="/profile" element={isAuth ? <Profile/> : <Navigate replace to="/" />} />
+                    </Routes>
+                </BrowserRouter>
+            </UserContext.Provider>
+        </AuthContext.Provider>
     );
 }
 
