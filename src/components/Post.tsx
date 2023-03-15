@@ -15,13 +15,19 @@ function Post(props:{post: string}) {
                         disabled
                         fullWidth
                         variant="standard"
+                        sx={{
+                            "& .MuiInputBase-input.Mui-disabled": {
+                              WebkitTextFillColor: "#000000",
+                          },
+                        }}
+                        inputProps={{style: {fontSize: 32}}}
                         value={obj.Title}
                     />
                 </Typography>
-                <Typography>
-                    {obj.UserId} {obj.Time}
+                <Typography color="gray">
+                    {"投稿者: " + obj.UserId + " / 最終更新: " + obj.Time}
                 </Typography>
-                <Typography>
+                <Typography color="common.gray">
                     {obj.Body}
                 </Typography>
             </CardContent>
