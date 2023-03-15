@@ -3,3 +3,9 @@
     flex-wrap: wrap;
     justify-content: space-between;
 }
+
+.box::after{
+    content:"";
+    display: block;
+    width:32%;
+}
