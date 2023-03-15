@@ -39,7 +39,9 @@ function Profile() {
             friend_id: friendId
         })
         setReload(reload+1)
-        setErrorMessage(res.data)
+        if (res.data as string !== 'OK') {
+            setErrorMessage(res.data)
+        }
     }
     
     // フレンド取得
