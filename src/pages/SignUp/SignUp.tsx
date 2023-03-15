@@ -60,13 +60,14 @@ function SignUp() {
     }
   
     return (
-    <>
+
+    <div style={{height: "100vh"}}>
       <Header/>
       <Box
         display="flex"
         alignItems="center"
         justifyContent="center"
-        padding={9}
+        padding={5}
       >
         <Card style={cardStyle}>
           <CardHeader 
@@ -136,7 +137,8 @@ function SignUp() {
 
         </Card>
       </Box>
-    </>)
+    </div>
+    )
 };
 
 export default SignUp
