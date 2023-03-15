@@ -64,7 +64,6 @@ function RequestData(props: {data: string}) {
                     </Grid>
                 </CardContent>
             </Box>
-            {obj.UserId}
         </Box>
     )
 }
