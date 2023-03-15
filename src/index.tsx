@@ -6,7 +6,7 @@ import App from './App';
 import reportWebVitals from './reportWebVitals';
 import { CookiesProvider } from "react-cookie";
 
-axios.defaults.baseURL = process.env.REACT_APP_API_URL as string
+axios.defaults.baseURL = 'https://hackzallobackend.azurewebsites.net/api'
 
 const root = ReactDOM.createRoot(
   document.getElementById('root') as HTMLElement
