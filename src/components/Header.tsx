@@ -39,14 +39,19 @@ export default function Header() {
         removeCookie("token");
         navigate('/')
     }
+
+    // ページ遷移
+    const redirectHome = () => {
+        navigate(isAuth ? '/home' : '/')
+    }
   
   return (
 
     <Box sx={{ flexGrow: 1 }}>
       <AppBar position="static"
-       style={{backgroundColor: "#0DA242", height:"50px"}}>
+       style={{backgroundColor: "#0DA242", height:"40px"}}>
       
-      <img src={TeamName} alt="" width="120px"  text-align= "left">
+      <img src={TeamName} alt="" width="120px"  text-align= "left" onClick={redirectHome}>
       </img>
   
       </AppBar>
