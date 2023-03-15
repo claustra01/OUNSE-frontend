@@ -19,7 +19,7 @@ function FriendData(props: {data: string}) {
     }
 
     return (
-        <Box sx={{ margin:"2%", borderRadius: "5%" }} style={{ backgroundColor:"#FFFFFF" }}>
+        <Box sx={{ m:"2% 2% 2% 5%", borderRadius:"5%" }} style={{ backgroundColor:"#FFFFFF" }}>
             <CardContent>
                 <Grid container spacing={2}>
                     <Grid item xs={10}>

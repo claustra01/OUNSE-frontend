@@ -37,7 +37,7 @@ function RequestData(props: {data: string}) {
             }}
             style={{ backgroundColor: "#FFFCEF" }}
         >
-            <Box sx={{ margin:"5%", borderRadius: "5%" }} style={{ backgroundColor:"#FFFFFF" }}>
+            <Box sx={{ margin:"5%", borderRadius:"5%" }} style={{ backgroundColor:"#FFFFFF" }}>
                 <CardContent>
                     <Grid container spacing={2}>
                         <Grid item xs={7}>
