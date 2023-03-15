@@ -71,7 +71,7 @@ function Profile() {
                     opacity: 0.9,
                 }}
                 style={{ backgroundColor: "#FFFCEF" }}
-                >
+            >
                 <TextField
                     id="friendReq" 
                     label="Friend Request" 
