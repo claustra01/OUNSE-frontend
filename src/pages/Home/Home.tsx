@@ -115,7 +115,7 @@ function Home() {
                                 backgroundColor: "#FFFFF"}}>
                                     Friend
                             </Button>
-                            {errorMessage}
+                            {/* {errorMessage} */}
                         
                         </Box>
                         <div className="TimeLine">
