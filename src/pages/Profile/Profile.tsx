@@ -38,6 +38,7 @@ function Profile() {
             user_id: userId,
             friend_id: friendId
         })
+        setFriendId('')
         setReload(reload+1)
         if (res.data as string !== 'OK') {
             setErrorMessage(res.data)
@@ -79,6 +80,7 @@ function Profile() {
                     label="Friend Request" 
                     variant="standard"
                     sx={{ m: "2em 3em 0 3em", height: "5em", width: "20em" }}
+                    value ={friendId}
                     onChange={(e) => setFriendId(e.target.value)}
                 />
                 <Button 
