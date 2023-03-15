@@ -7,6 +7,8 @@ import axios from "axios";
 import './Home.css';
 import TimeLine from "../../components/TimeLine/TimeLine";
 import { UserContext } from '../../App';
+import Header from '../../components/Header'
+// import Diversity1Icon from '@mui/icons-material/Diversity1';
 
 type Reload = {
     reload: number,
@@ -78,62 +80,75 @@ function Home() {
     }, [userId, reload])
             
     return (
-        <>
-          <div className="background-color"/>
-            <AppBar position="static" style={{ backgroundColor: "#FFD7A"}}>
-                < Button 
-                    variant="contained" 
-                    sx={{m: "1em 5em 1em 90em", 
-                    justifyContent:"center", 
-                    textAlign: "center"
-                    }}
-                    onClick={redirectSignOut}
-                    style={{ backgroundColor: "#388e3c" }}
-                >
-                    SignOut
-                </Button> 
-            </AppBar>
-            <Box
-                sx={{
-                    width: 400,
-                    opacity: 0.9,
-                }}
-                style={{ backgroundColor: "#FFFCEF" }}
-                >
-                <TextField
-                    required 
-                    id="title" 
-                    label="title" 
-                    variant="standard"
-                    sx={{ m: "2em 3em 0 3em", height: "5em", width: "20em" }}
-                    value={title}
-                    onChange={((e)=>{setTitle(e.target.value)})}
-                />
-                <TextField 
-                    required
-                    multiline
-                    minRows="14"
-                    id="post" 
-                    label="post" 
-                    sx={{ m:"1em 3em 2em 3em", height: "10em", width: "20em" }}
-                    value={body}
-                    onChange={((e)=>{setBody(e.target.value)})}
-                    />
-                <Button 
-                    variant="contained"
-                    sx={{ m:"14em 5em 10em 20em ", height: "3em", textAlign:"center", justifyContent: "center", alignItems: "center", display:"flex" }} 
-                    style={{ backgroundColor: "#388e3c" }}
-                    onClick={clickPost}
-                >投稿</Button>
-                {errorMessage}
-                <Button onClick={redirectProfile}>プロフィール</Button>
-            </Box>
-            <div className="TimeLine">
-                <ReloadContext.Provider value={{reload, setReload}}>
-                    <TimeLine timeLine={timeLine} />
-                </ReloadContext.Provider>
+            <div className="wrapper" style={{height: "100vh"}}>
+                <Header />
+                    <div className="background-color"/>
+                        
+                            < Button 
+                                variant="contained" 
+                                sx={{m: "-5em 2em 0 95em", 
+                                justifyContent:"center",
+                                textAlign: "center",
+                                }}
+                                onClick={redirectSignOut}
+                                style={{ backgroundColor: "#388e3c" }}
+                            >
+                                SignOut
+                            </Button> 
+                        <Box
+                            sx={{
+                                width: 400,
+                                Height: 90
+                                // opacity: 0.9,
+                            }}
+                            style={{ backgroundColor: "#FFFFFF",
+                            margin: "-1em 50em 0 0",
+                        
+                            }}
+                            >
+                            <TextField
+                                required 
+                                id="title" 
+                                label="title" 
+                                variant="standard"
+                                sx={{ m: "2em 3em 0 3em", height: "5em", width: "20em" }}
+                                value={title}
+                                onChange={((e)=>{setTitle(e.target.value)})}
+                            />
+                            <TextField 
+                                required
+                                multiline
+                                minRows="14"
+                                id="post" 
+                                label="post" 
+                                sx={{ m:"1em 3em 2em 3em", height: "10em", width: "20em" }}
+                                value={body}
+                                onChange={((e)=>{setBody(e.target.value)})}
+                                />
+                            <Button 
+                                variant="contained"
+                                sx={{ m:"14em 5em 10em 20em ", height: "3em", textAlign:"center", justifyContent: "center", alignItems: "center", display:"flex" }} 
+                                style={{ backgroundColor: "#388e3c" }}
+                                onClick={clickPost}
+                            >投稿</Button>
+                        
+                            <Button
+                                onClick={redirectProfile}
+                                sx={{ m:" -25em 0em 0em 4em ", 
+
+                                backgroundColor: "#FFFFF"}}>
+                                    Friend
+                            </Button>
+                            {errorMessage}
+                        
+                        </Box>
+                        <div className="TimeLine">
+                            <ReloadContext.Provider value={{reload, setReload}}>
+                                <TimeLine timeLine={timeLine} />
+                            </ReloadContext.Provider>
+                        </div>
             </div>
-        </>
+    
     )
  
 }
