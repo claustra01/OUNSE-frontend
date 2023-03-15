@@ -60,13 +60,14 @@ function SignUp() {
     }
   
     return (
-    <>
+
+    <div style={{height: "100vh"}}>
       <Header/>
       <Box
         display="flex"
         alignItems="center"
         justifyContent="center"
-        padding={15}
+        padding={5}
       >
         <Card style={cardStyle}>
           <CardHeader 
@@ -118,19 +119,26 @@ function SignUp() {
         
           </CardContent>
           <CardActions>
+            <div> 
             <Button 
               variant="contained"
               size="large"
-              style={{backgroundColor: "#00A83C"}}
+              style={{backgroundColor: "#00A83C", margin:"0 1em 0 17em"}}
               onClick={clickSignUp}
             >
               Sign Up
             </Button>
+            <div style={{color: "#FF3131", whiteSpace: "nowrap", margin:"-3em 10em 4em 1em"}}>
+              {errorMessage}
+            </div>
+
+            </div>
           </CardActions>
-          {errorMessage}
+
         </Card>
       </Box>
-    </>)
+    </div>
+    )
 };
 
 export default SignUp

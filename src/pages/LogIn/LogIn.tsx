@@ -92,21 +92,37 @@ function LogIn() {
                 />
               </div>
             </CardContent>
+
+            
             <CardActions>
-              {/* <div className="Button" style={{textAlign: "center",justifyContent:"center", display:"flex", flexDirection: "column"}} > */}
-                <div className="loginButton" style={{textAlign: "center",justifyContent:"center", display:"flex", flexDirection: "column"}}>
+                <div className="loginButton" >
+                  <div style={{ color: "#FF3131",
+                      display:"flex",  margin: "0 19em 0 1em", 
+                      whiteSpace: "nowrap"}}>
+            
+           
+            <div className="ErrorTextbutton" style={{flexWrap:"nowrap"}}>
                   <Button
                     variant="contained"
-                    sx={{m: "0 auto", textAlign: "center",justifyContent:"center"}}
+                    sx={{m: "0 7em 10em 20em",
+                    // textAlign: "center",justifyContent:"center"
+                  }}
                     style={{backgroundColor: "#00A83C"}}
                     onClick={clickLogIn}
                   >
                     Login
                   </Button>
+                  <div style={{color: "#FF3131", whiteSpace: "nowrap", margin:"-11em 12em 4em 0em"}}>
+                         {errorMessage}
+                  </div>
                 </div>
-          
-            </CardActions>
-            {errorMessage}
+                </div>
+                </div>
+                
+            </CardActions >
+            
+    
+              
           </Card>
         </Box>
       </div>

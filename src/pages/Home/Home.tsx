@@ -2,17 +2,22 @@ import { Box, Button, TextField } from "@mui/material";
 import AppBar from '@mui/material/AppBar';
 import { useNavigate } from 'react-router-dom';
 import { useCookies } from "react-cookie";
-import { useState, useEffect } from 'react';
+import { useState, useEffect, useContext, createContext } from 'react';
 import axios from "axios";
 import './Home.css';
 import TimeLine from "../../components/TimeLine/TimeLine";
+import { UserContext } from '../../App';
 
-type User = {
-    userId: string
-    userName: string
+type Reload = {
+    reload: number,
+    setReload: React.Dispatch<React.SetStateAction<number>>
 }
 
-function Home({userId, userName}: User) {
+export const ReloadContext = createContext({} as Reload)
+
+function Home() {
+
+    const {userId} = useContext(UserContext)
 
     // ログアウト
     // eslint-disable-next-line @typescript-eslint/no-unused-vars
@@ -22,6 +27,11 @@ function Home({userId, userName}: User) {
     const redirectSignOut = () => {
         removeCookie("token");
         navigate('/')
+    }
+
+    // プロフィールに遷移
+    const redirectProfile = () => {
+        navigate('/profile')
     }
     
     // 新規投稿
@@ -48,11 +58,15 @@ function Home({userId, userName}: User) {
       })
       const obj = JSON.parse(JSON.stringify(res));
       console.log(obj.data)
+      setTitle('')
+      setBody('')
+      setReload(reload+1)
 
     }
 
     // TL取得
     const [timeLine, setTimeLine] = useState([])
+    const [reload, setReload] = useState(0)
 
     useEffect(() => { 
         const getTL = async () => {
@@ -61,7 +75,7 @@ function Home({userId, userName}: User) {
             setTimeLine(obj.data)
         }
         if (userId !== '') getTL()
-    }, [userId])
+    }, [userId, reload])
             
     return (
         <>
@@ -92,6 +106,7 @@ function Home({userId, userName}: User) {
                     label="title" 
                     variant="standard"
                     sx={{ m: "2em 3em 0 3em", height: "5em", width: "20em" }}
+                    value={title}
                     onChange={((e)=>{setTitle(e.target.value)})}
                 />
                 <TextField 
@@ -101,6 +116,7 @@ function Home({userId, userName}: User) {
                     id="post" 
                     label="post" 
                     sx={{ m:"1em 3em 2em 3em", height: "10em", width: "20em" }}
+                    value={body}
                     onChange={((e)=>{setBody(e.target.value)})}
                     />
                 <Button 
@@ -108,13 +124,14 @@ function Home({userId, userName}: User) {
                     sx={{ m:"14em 5em 10em 20em ", height: "3em", textAlign:"center", justifyContent: "center", alignItems: "center", display:"flex" }} 
                     style={{ backgroundColor: "#388e3c" }}
                     onClick={clickPost}
-                >
-                  投稿
-                </Button>
+                >投稿</Button>
                 {errorMessage}
+                <Button onClick={redirectProfile}>プロフィール</Button>
             </Box>
             <div className="TimeLine">
-                <TimeLine timeLine={timeLine} />
+                <ReloadContext.Provider value={{reload, setReload}}>
+                    <TimeLine timeLine={timeLine} />
+                </ReloadContext.Provider>
             </div>
         </>
     )

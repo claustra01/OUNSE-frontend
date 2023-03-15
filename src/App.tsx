@@ -1,4 +1,4 @@
-import { useState, useEffect} from 'react';
+import { useState, useEffect, createContext } from 'react';
 import { useCookies } from "react-cookie";
 import { Routes, Route, BrowserRouter, Navigate } from 'react-router-dom';
 import axios from 'axios'
@@ -9,6 +9,14 @@ import Top from './pages/Top/Top'
 import LogIn from './pages/LogIn/LogIn'
 import SignUp from './pages/SignUp/SignUp'
 import Home from './pages/Home/Home';
+import Profile from './pages/Profile/Profile';
+
+type User = {
+    userId: string,
+    userName: string
+}
+
+export const UserContext = createContext({} as User)
 
 function App() {
 
@@ -40,16 +48,18 @@ function App() {
         if (isAuth) getUserInfo()
     })
 
-    return (   
-        <BrowserRouter>
-            <Routes>
-                <Route path="/" element={isAuth ? <Navigate replace to="/home" /> : <Top/>} />
-                <Route path="/login" element={isAuth ? <Navigate replace to="/home" /> : <LogIn/>} />
-                <Route path="/signup" element={isAuth ? <Navigate replace to="/home" /> : <SignUp/>} />
-                <Route path="/home" element={isAuth ? <Home userId={userId} userName={userName} /> : <Navigate replace to="/" />} />
-            </Routes>
-        </BrowserRouter>
-
+    return (
+        <UserContext.Provider value={{userId, userName}}>
+            <BrowserRouter>
+                <Routes>
+                    <Route path="/" element={isAuth ? <Navigate replace to="/home" /> : <Top/>} />
+                    <Route path="/login" element={isAuth ? <Navigate replace to="/home" /> : <LogIn/>} />
+                    <Route path="/signup" element={isAuth ? <Navigate replace to="/home" /> : <SignUp/>} />
+                    <Route path="/home" element={isAuth ? <Home/> : <Navigate replace to="/" />} />
+                    <Route path="/profile" element={isAuth ? <Profile/> : <Navigate replace to="/" />} />
+                </Routes>
+            </BrowserRouter>
+        </UserContext.Provider>
     );
 }
 
