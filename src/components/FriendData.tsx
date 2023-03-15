@@ -1,12 +1,21 @@
 import { Box, Button, CardContent, Grid, Typography } from "@mui/material";
+import axios from "axios";
+import { useContext } from "react";
+import { ReloadContext } from "../pages/Profile/Profile";
 
 function FriendData(props: {data: string}) {
 
     const obj = JSON.parse(JSON.stringify(props.data));
+    const {reload, setReload} = useContext(ReloadContext)
 
     // フレンド削除
-    const removeFriend = () => {
-        
+    const removeFriend = async () => {
+        const res = await axios.delete('removefriend', {params: {
+            user_id: obj.UserId,
+            friend_id: obj.FriendId
+        }})
+        setReload(reload+1)
+        console.log(res.data)  
     }
 
     return (

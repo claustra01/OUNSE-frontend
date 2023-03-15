@@ -59,7 +59,7 @@ function Profile() {
     }, [userId, reload])
 
     return (
-        <>
+        <ReloadContext.Provider value={{reload, setReload}}>
             <Header/>
             <FriendListStyle>
                 <FriendList friends={friendList} />
@@ -90,7 +90,7 @@ function Profile() {
             <RequestListStyle>
                 <RequestList requests={requestList} />
             </RequestListStyle>
-        </>
+        </ReloadContext.Provider>
     )
     
 }
