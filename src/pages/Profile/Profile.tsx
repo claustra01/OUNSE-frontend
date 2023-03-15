@@ -77,7 +77,9 @@ function Profile() {
                             style={{ backgroundColor: "#388e3c" }}
                             onClick={reqFriend}
                         >リクエスト送信</Button>
-                        {errorMessage}
+                        <div style={{color: "#FF3131", whiteSpace: "nowrap", margin:"2em 50em 60em 7em"}}>
+                            {errorMessage}
+                        </div>
                     </Box>
                     <RequestListStyle>
                         <RequestList requests={requestList} />
