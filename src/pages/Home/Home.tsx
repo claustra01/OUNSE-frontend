@@ -1,5 +1,4 @@
 import { Box, Button, TextField } from "@mui/material";
-import AppBar from '@mui/material/AppBar';
 import { useNavigate } from 'react-router-dom';
 import { useCookies } from "react-cookie";
 import { useState, useEffect, useContext, createContext } from 'react';
