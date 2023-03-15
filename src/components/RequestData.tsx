@@ -4,7 +4,7 @@ function RequestData(props: {data: string}) {
 
     return (
         <>
-            {obj.FriendId}
+            {obj.UserId}
         </>
     )
 }
