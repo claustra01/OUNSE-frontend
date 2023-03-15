@@ -1,11 +1,18 @@
 import { Box, Button, TextField } from '@mui/material';
-import { useState, useContext, useEffect } from 'react';
+import { useState, useContext, useEffect, createContext } from 'react';
 import { UserContext } from '../../App';
 import axios from 'axios';
 import styled from 'styled-components';
 import Header from '../../components/Header';
 import FriendList from '../../components/FriendList';
 import RequestList from '../../components/RequestList';
+
+type Reload = {
+    reload: number,
+    setReload: React.Dispatch<React.SetStateAction<number>>
+}
+
+export const ReloadContext = createContext({} as Reload)
 
 const FriendListStyle = styled.div`
     margin-left: 30rem
@@ -21,18 +28,24 @@ function Profile() {
 
     // フレンドリクエスト
     const [friendId, setFriendId] = useState('')
+    const [errorMessage, setErrorMessage] = useState('')
 
     const reqFriend = async () => {
+        if (userId === friendId) {
+            setErrorMessage('自分にフレンドリクエストは送れません')
+        }
         const res = await axios.post('sendfriend', {
             user_id: userId,
             friend_id: friendId
         })
-        console.log(res.data)
+        setReload(reload+1)
+        setErrorMessage(res.data)
     }
     
     // フレンド取得
     const [friendList, setFriendList] = useState([])
     const [requestList, setRequestList] = useState([])
+    const [reload, setReload] = useState(0)
 
     useEffect(() => { 
         const getFriend = async () => {
@@ -43,7 +56,7 @@ function Profile() {
             setRequestList(obj.data.RequestList)
         }
         if (userId !== '') getFriend()
-    }, [userId])
+    }, [userId, reload])
 
     return (
         <>
@@ -53,6 +66,7 @@ function Profile() {
             </FriendListStyle>
             <Box
                 sx={{
+                    height: '10rem',
                     width: '30rem',
                     opacity: 0.9,
                 }}
@@ -71,6 +85,7 @@ function Profile() {
                     style={{ backgroundColor: "#388e3c" }}
                     onClick={reqFriend}
                 >リクエスト送信</Button>
+                {errorMessage}
             </Box>
             <RequestListStyle>
                 <RequestList requests={requestList} />
