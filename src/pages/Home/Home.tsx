@@ -27,6 +27,7 @@ function Home() {
     // 新規投稿
     const [title, setTitle] = useState('')
     const [body, setBody] = useState('')
+    // eslint-disable-next-line @typescript-eslint/no-unused-vars
     const [errorMessage, setErrorMessage] = useState('')
 
     const clickPost = async () => {
