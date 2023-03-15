@@ -4,8 +4,31 @@ import TeamName from "./mastdonteamlogo.png";
 import { Button } from '@mui/material';
 import { useCookies } from 'react-cookie';
 import { useNavigate } from 'react-router-dom';
+import { useContext } from 'react';
+import { AuthContext } from '../App';
 
 export default function Header() {
+
+    const {isAuth} = useContext(AuthContext)
+
+    function LogOutButton(auth: boolean) {
+        if (auth) {
+            return (
+                <Button 
+                    variant="contained" 
+                    sx={{
+                        m: "-6em 2em 0 90%",
+                        width:"7%",
+                        justifyContent:"center",
+                        textAlign: "center",
+                    }}
+                    onClick={clickLogOut}
+                    style={{ backgroundColor: "#388e3c" }}
+                >Logout</Button> 
+            )
+        }
+        return (<></>)
+    }
 
     // ログアウト
     // eslint-disable-next-line @typescript-eslint/no-unused-vars
@@ -28,17 +51,7 @@ export default function Header() {
   
       </AppBar>
 
-      <Button 
-        variant="contained" 
-        sx={{
-          m: "-6em 2em 0 90%",
-          width:"7%",
-          justifyContent:"center",
-          textAlign: "center",
-        }}
-        onClick={clickLogOut}
-        style={{ backgroundColor: "#388e3c" }}
-      >Logout</Button> 
+      {LogOutButton(isAuth)}
         
     </Box>
   );

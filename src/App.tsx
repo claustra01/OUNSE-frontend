@@ -16,7 +16,11 @@ type User = {
     userName: string
 }
 
-export const AuthContext = createContext(false)
+type Auth = {
+    isAuth: boolean
+}
+
+export const AuthContext = createContext({} as Auth)
 export const UserContext = createContext({} as User)
 
 function App() {
@@ -50,7 +54,7 @@ function App() {
     })
 
     return (
-        <AuthContext.Provider value={isAuth}>
+        <AuthContext.Provider value={{isAuth}}>
             <UserContext.Provider value={{userId, userName}}>
                 <BrowserRouter>
                     <Routes>
