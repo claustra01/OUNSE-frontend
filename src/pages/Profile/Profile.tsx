@@ -1,4 +1,4 @@
-import { Box, Button, TextField } from '@mui/material';
+import { Box, Button, Grid, TextField } from '@mui/material';
 import { useState, useContext, useEffect, createContext } from 'react';
 import { UserContext } from '../../App';
 import axios from 'axios';
@@ -13,10 +13,6 @@ type Reload = {
 }
 
 export const ReloadContext = createContext({} as Reload)
-
-const FriendListStyle = styled.div`
-    margin-left: 30rem
-`;
 
 const RequestListStyle = styled.div`
     margin-top: 5rem
@@ -38,8 +34,11 @@ function Profile() {
             user_id: userId,
             friend_id: friendId
         })
+        setFriendId('')
         setReload(reload+1)
-        setErrorMessage(res.data)
+        if (res.data as string !== 'OK') {
+            setErrorMessage(res.data)
+        }
     }
     
     // フレンド取得
@@ -59,38 +58,36 @@ function Profile() {
     }, [userId, reload])
 
     return (
-        <>
+        <ReloadContext.Provider value={{reload, setReload}}>
             <Header/>
-            <FriendListStyle>
-                <FriendList friends={friendList} />
-            </FriendListStyle>
-            <Box
-                sx={{
-                    height: '10rem',
-                    width: '30rem',
-                    opacity: 0.9,
-                }}
-                style={{ backgroundColor: "#FFFCEF" }}
-                >
-                <TextField
-                    id="friendReq" 
-                    label="Friend Request" 
-                    variant="standard"
-                    sx={{ m: "2em 3em 0 3em", height: "5em", width: "20em" }}
-                    onChange={(e) => setFriendId(e.target.value)}
-                />
-                <Button 
-                    variant="contained"
-                    sx={{ m: "0em 0em 0em 10em ", height: "3em", width: "10em", textAlign:"center", justifyContent: "center", alignItems: "center", display:"flex" }} 
-                    style={{ backgroundColor: "#388e3c" }}
-                    onClick={reqFriend}
-                >リクエスト送信</Button>
-                {errorMessage}
-            </Box>
-            <RequestListStyle>
-                <RequestList requests={requestList} />
-            </RequestListStyle>
-        </>
+            <Grid container spacing={2}>
+                <Grid item xs={4}>
+                    <Box sx={{ height: '10rem', width: '30rem', opacity: 0.9 }} style={{ backgroundColor: "#FFFCEF" }}>
+                        <TextField
+                            id="friendReq" 
+                            label="Friend Request" 
+                            variant="standard"
+                            sx={{ m: "2em 3em 0 3em", height: "5em", width: "20em" }}
+                            value ={friendId}
+                            onChange={(e) => setFriendId(e.target.value)}
+                        />
+                        <Button 
+                            variant="contained"
+                            sx={{ m: "0em 0em 0em 10em ", height: "3em", width: "10em", textAlign:"center", justifyContent: "center", alignItems: "center", display:"flex" }} 
+                            style={{ backgroundColor: "#388e3c" }}
+                            onClick={reqFriend}
+                        >リクエスト送信</Button>
+                        {errorMessage}
+                    </Box>
+                    <RequestListStyle>
+                        <RequestList requests={requestList} />
+                    </RequestListStyle>
+                </Grid>
+                <Grid item xs={8}>
+                    <FriendList friends={friendList} />
+                </Grid>
+            </Grid>
+        </ReloadContext.Provider>
     )
     
 }
